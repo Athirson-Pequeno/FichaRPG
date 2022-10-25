@@ -12,7 +12,7 @@ export default function Rotas(){
     
     const Tab = createBottomTabNavigator();
     return (
-        <NavigationContainer>
+        <NavigationContainer >
             <Tab.Navigator screenOptions={ ({route}) =>({
                 
                 tabBarIcon: ({ color, size }) => {
@@ -28,5 +28,6 @@ export default function Rotas(){
                 <Tab.Screen name="Magias" component={TelaMagias}/>
             </Tab.Navigator>
         </NavigationContainer>
+
     )
 }
