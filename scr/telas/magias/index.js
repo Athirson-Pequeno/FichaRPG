@@ -55,7 +55,7 @@ const pesquisar = (texto) =>{
     <FlatList
       data       = {repoFilter}
       renderItem = {({item}) => (<DetalheMagias item={item} setMagiaSelecionada={setMagiaSelecionada}/>)}
-      keyExtractor={item => item.id}/>
+      keyExtractor={item => item.id} />
     <ModalDescriacao  magiaSelecionada={magiaSelecionada} setMagiaSelecionada={setMagiaSelecionada}/>
     <StatusBar/>
   </SafeAreaView>
