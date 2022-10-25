@@ -23,26 +23,6 @@
          "srd": true
       },
       {
-         "nome": "Presságio",
-         "id": 10004,
-         "original": "Divination",
-         "nivel": 4,
-         "escola": "Adivinhação",
-         "tempo": "Uma ação",
-         "alcance": "Pessoal",
-         "componentes": " V S M (incenso e uma oferenda sacrificial adequada à sua religião, valendo, juntos, pelo menos 25 PO, que são consumidos pela magia)",
-         "materiaispagos": true,
-         "duracao": "Instantânea",
-         "concentracao": false,
-         "ritual": true,
-         "classes": "Clérigo",
-         "subclasses": "Druida (Terra - Floresta), Druida (Terra - Planície)",
-         "descricao": "Sua magia e uma oferenda colocam-no em contato com um deus ou um dos servos dele. Você faz uma única pergunta a respeito de um objetivo específico, evento ou atividade que ocorrerá no prazo de 7 dias. O DM oferece uma resposta verdadeira. A resposta pode ser uma frase curta, uma rima enigmática ou um presságio.<br>&emsp;A magia não leva em conta quaisquer circunstâncias que possam mudar o resultado futuro, como a conjuração de magias adicionais ou a perda ou chegada de um companheiro.<br>&emsp;Se você conjurar a magia duas ou mais vezes antes de concluir seu próximo descanso longo, há uma chance cumulativa de 25% para cada conjuração após a primeira de você obter uma resposta aleatória. O DM faz essa jogada em segredo.",
-         "fonte": "Livro do Jogador (PHB)",
-         "pagina": "270 (234)",
-         "srd": true
-      },
-      {
          "nome": "Auxílio",
          "id": 10006,
          "original": "Aid",
@@ -5472,6 +5452,26 @@
          "descricao": "Uma prisão com a forma de um cubo invisível e imóvel, composta de força mágica, surge ao redor de uma área à sua escolha e no alcance da magia. Ela pode ser uma jaula ou uma caixa sólida, à sua escolha.<br>&emsp;A jaula pode ter até 6 metros [20 ft.] de lado, sendo feita de barras de 1,5 centímetros [1/2 inch] de espessura com espaços de 1,5 centímetros [1/2 inch] entre elas.<br>&emsp;A caixa pode ter 3 metros [10 ft.] de lado e cria uma barreira sólida que impede qualquer matéria de passar através dela, bloqueando quaisquer magias conjuradas dentro ou fora da área.<br>&emsp;Quando a magia é conjurada, qualquer criatura que estiver completamente dentro da área afetada fica aprisionada. Criaturas que estejam apenas parcialmente na área, ou que sejam grandes demais para caber dentro da área, são empurradas para longe do centro da área, até ficarem completamente fora dela.<br>&emsp;Uma criatura dentro da prisão não pode deixá-la por meios não-mágicos. Se a criatura tenta usar alguma forma de teleporte ou viagem extraplanar para sair da prisão, precisa primeiro fazer uma salvaguarda de Carisma. Se falhar, ela não pode sair e desperdiça o uso da magia ou efeito; se for bem-sucedida, ela pode usar a magia para deixar a prisão. A prisão também se estende ao Plano Etéreo, bloqueando viagens etéreas.<br>&emsp;Esta magia não pode ser dissipada por <i>Dissipar Magia</i>.",
          "fonte": "Livro do Jogador (PHB)",
          "pagina": "222 (243)",
+         "srd": true
+      },
+      {
+         "nome": "Presságio",
+         "id": 10004,
+         "original": "Divination",
+         "nivel": 4,
+         "escola": "Adivinhação",
+         "tempo": "Uma ação",
+         "alcance": "Pessoal",
+         "componentes": " V S M (incenso e uma oferenda sacrificial adequada à sua religião, valendo, juntos, pelo menos 25 PO, que são consumidos pela magia)",
+         "materiaispagos": true,
+         "duracao": "Instantânea",
+         "concentracao": false,
+         "ritual": true,
+         "classes": "Clérigo",
+         "subclasses": "Druida (Terra - Floresta), Druida (Terra - Planície)",
+         "descricao": "Sua magia e uma oferenda colocam-no em contato com um deus ou um dos servos dele. Você faz uma única pergunta a respeito de um objetivo específico, evento ou atividade que ocorrerá no prazo de 7 dias. O DM oferece uma resposta verdadeira. A resposta pode ser uma frase curta, uma rima enigmática ou um presságio.<br>&emsp;A magia não leva em conta quaisquer circunstâncias que possam mudar o resultado futuro, como a conjuração de magias adicionais ou a perda ou chegada de um companheiro.<br>&emsp;Se você conjurar a magia duas ou mais vezes antes de concluir seu próximo descanso longo, há uma chance cumulativa de 25% para cada conjuração após a primeira de você obter uma resposta aleatória. O DM faz essa jogada em segredo.",
+         "fonte": "Livro do Jogador (PHB)",
+         "pagina": "270 (234)",
          "srd": true
       },
       {

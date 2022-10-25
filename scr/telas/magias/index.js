@@ -1,7 +1,9 @@
 import React,{useEffect, useState} from "react";
-import { View, StyleSheet, FlatList, SafeAreaView, TextInput } from "react-native";
-const magiasJson = require('../../servicos/dados/magiasPT.json');
+import { View, StyleSheet, FlatList, SafeAreaView, TextInput, StatusBar } from "react-native";
 import DetalheMagias from "./componentes/detalhesMagias";
+import ModalDescriacao from "./componentes/modalDescricao";
+
+const magiasJson = require('../../servicos/dados/magiasPT.json');
 
 export default function TelaMagias(){
 
@@ -9,6 +11,8 @@ const lista = []
 const [repoMaster, setRepoMaster] = useState([]);
 const [repoFilter, setRepoFilter] = useState([]);
 const [pesquisa, setPesquisa] = useState('');
+const [magiaSelecionada, setMagiaSelecionada] = useState({})
+
 
 
 useEffect(()=>{ 
@@ -42,8 +46,7 @@ const pesquisar = (texto) =>{
 
 }
 
-  return (<SafeAreaView style={{flex:1}}>
-    <View style = {estilos.container}>
+  return (<SafeAreaView style={estilos.containerSa}>
       <TextInput 
       style       = {estilos.textInput}
       placeholder = "Pesquisar..."
@@ -51,32 +54,15 @@ const pesquisar = (texto) =>{
       value={pesquisa}/>
     <FlatList
       data       = {repoFilter}
-      style      = {{flex:1}}
-      renderItem = {({item}) => ( <DetalheMagias item={item}/>)}/>
-  </View>
-  </SafeAreaView>)
+      renderItem = {({item}) => (<DetalheMagias item={item} setMagiaSelecionada={setMagiaSelecionada}/>)}
+      keyExtractor={item => item.id}/>
+    <ModalDescriacao  magiaSelecionada={magiaSelecionada} setMagiaSelecionada={setMagiaSelecionada}/>
+    <StatusBar/>
+  </SafeAreaView>
+  )
 }
 
 const estilos = StyleSheet.create({
-  container:{
-    flex:1,
-    alignItems:'center',
-    justifyContent:'center'
-  },
-  botao:{
-    backgroundColor: '#468F18',
-    marginTop: 20,
-    marginBottom: 30,
-    padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 8,
-    width: '90%',
-  },
-  textoBotao:{
-    fontWeight:'bold',
-    fontSize:18
-  },
   textInput: {
     height: 40,
     width:'95%',
@@ -89,6 +75,11 @@ const estilos = StyleSheet.create({
   viewFlatlist:{
     borderRadius:6,
     flex:1
-  }
+  },
+  containerSa: {
+		flex: 1,
+		alignItems: "stretch",
+		justifyContent: "flex-start",
+	},
  }
 );
