@@ -1,16 +1,11 @@
-import React,{useState} from "react";
-import { Text, View, StyleSheet,useWindowDimensions, Modal, TouchableOpacity  } from "react-native";
-import RenderHTML from "react-native-render-html";
-const magiasJson = require('../../../servicos/dados/magiasPT.json'); 
+import React from "react";
+import { Text, View, StyleSheet, TouchableOpacity  } from "react-native";
 
 
 export default function DetalheMagias({item, setMagiaSelecionada}){
 
-    const { width } = useWindowDimensions();
-    const source = {html: item.descricao};
-    const arrayClasse = item.classes.split(',')
-
-    
+    const arrayClasse = item.classes.split(',')   
+    const arraySubClasse = item.subclasses.split(',')   
 
     return (
     <TouchableOpacity style={estilos.cardMagia} onPress={() => setMagiaSelecionada(item)}>
@@ -22,11 +17,10 @@ export default function DetalheMagias({item, setMagiaSelecionada}){
                 </View>
                 <View style={estilos.cardNomeClasse}>
                     <Text style={estilos.textClasse}>Classes: </Text>
-                    {arrayClasse.map((key)=>{
-                        return ( <Text style={estilos.cardClasse} key={key}> {key} </Text>)
-                    })}
+                    {arrayClasse.map((key)=>{return ( <Text style={estilos.cardClasse} key={key}> {key} </Text>)})}
                 </View>
-                <Text style={estilos.cardDescricao}>Alcance: {item.alcance}</Text>
+                {(arraySubClasse != '') ? <View style={estilos.cardNomeClasse}><Text style={estilos.textClasse}>Sub-Classes: </Text>{arraySubClasse.map((key)=>{return ( <Text style={estilos.cardClasse} key={key}> {key} </Text>)})}</View> : <></>}
+                {/* <Text style={estilos.cardDescricao}>Alcance: {item.alcance}</Text> */}
                 {/* <View style={estilos.cardDescricao}>
                  <RenderHTML  
                     contentWidth={width}
@@ -62,7 +56,6 @@ const estilos = StyleSheet.create({
         borderRadius: 8,
         margin:6,
         padding:7,
-        
     },
     nomeMagia:{
         fontSize:22,
@@ -76,7 +69,8 @@ const estilos = StyleSheet.create({
         flexDirection:'row',
         marginTop:15,
         flexWrap:'wrap',
-        justifyContent:'center'
+        justifyContent:'flex-start',
+        alignSelf:"flex-start"
     },
     cardNomeENivel:{
         flex:1,

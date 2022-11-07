@@ -8,7 +8,7 @@ import TelaMagias from "../telas/magias";
 import TelaPersonagem from "../telas/personagem";
 
 
-export default function Rotas(){
+export default function Rotas(atributo){
     
     const Tab = createBottomTabNavigator();
     return (

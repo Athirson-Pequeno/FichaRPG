@@ -1,43 +1,49 @@
 import React from "react";
-import { Text, TextInput, View, StyleSheet } from "react-native";
+import { Text, View, ScrollView } from "react-native";
+import Atributos from "./componentes/atributos";
+import Pericias from "./componentes/pericias";
+import atributosJson from '../../servicos/dados/atributos.json'
 
-export default function TelaPersonagem(){
+export default function TelaPersonagem(atributo){
 
-    return (<View>
-        <View>
-            <View style={estilos.valContainer}>
-            <Text>Des</Text>
-            <TextInput style={estilos.valInput}></TextInput>
-            </View>
-            <View style={estilos.valContainer}>
-            <Text>for</Text>
-            <TextInput style={estilos.valInput}></TextInput>
-            </View><View style={estilos.valContainer}>
-            <Text>car</Text>
-            <TextInput style={estilos.valInput}></TextInput>
-            </View><View style={estilos.valContainer}>
-            <Text>sab</Text>
-            <TextInput style={estilos.valInput}></TextInput>
-            </View><View style={estilos.valContainer}>
-            <Text>int</Text>
-            <TextInput style={estilos.valInput}></TextInput>
-            </View><View style={estilos.valContainer}>
-            <Text>con</Text>
-            <TextInput style={estilos.valInput}></TextInput>
-            </View>
-        </View>
-    </View>)
-    }
+    
 
-    const estilos = StyleSheet.create({
-valTexto:{
-},
-valContainer:{
-    flexDirection:'row'
-},
-valInput:{
-   borderWidth:3
+    return (<ScrollView>
+    <Text>nome</Text>
+    <Text>classe</Text>
+    <Text>nivel</Text>
+    <Text>vida</Text>
+    <Text>Ca</Text>
+    <Text>raca</Text>
+    <Text>bonus proficiencia</Text>
+    <Text>deslocamento</Text>
+    <Text>dado de vida</Text>
+    
+
+
+
+    <View style={{flexDirection:"row", flex:1}}>
+        <Atributos/>
+        <Pericias/>
+   </View>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+   <Text>nivel</Text>
+
+   </ScrollView>)
 }
-
-
-    })

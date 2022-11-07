@@ -1,0 +1,78 @@
+{
+    "nome":"Pericias",
+    "dados":[
+        {
+            "nome": "Acrobacia",
+            "modificador": "Sab"
+        },
+        {
+            "nome": "Adestrar Animal",
+            "modificador": "Sab"
+        },
+        {
+            "nome": "Arcana",
+            "modificador": "Int"
+        },
+        {
+            "nome": "Atletismo",
+            "modificador": "For"
+        },
+        {
+            "nome": "Atuação",
+            "modificador": "Car"
+        },
+        {
+            "nome": "Furtividade",
+            "modificador": "Des"
+        },
+        {
+            "nome": "História",
+            "modificador": "Int"
+        },
+        {
+            "nome": "Intimidação",
+            "modificador": "Car"
+        },
+        {
+            "nome": "Medicina",
+            "modificador": "Int"
+        },
+        {
+            "nome": "Natureza",
+            "modificador": "Int"
+        },
+        {
+            "nome": "Percepção",
+            "modificador": "Sab"
+        },
+        {
+            "nome": "Persuasão",
+            "modificador": "Car"
+        },
+        {
+            "nome": "Prestidigitação",
+            "modificador": "Des"
+        },
+        {
+            "nome": "Procurar",
+            "modificador": "Int"
+        },
+        {
+            "nome": "Religião",
+            "modificador": "Int"
+        },
+        {
+            "nome": "Sentir Motivação",
+            "modificador": "Sab"
+        },
+        {
+            "nome": "Sobrevivência",
+            "modificador": "Sab"
+        },
+        {
+            "nome": "Trapacear",
+            "modificador": "Car"
+        }
+    
+    ]
+}

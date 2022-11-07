@@ -3,17 +3,33 @@ import { Modal, Text, StyleSheet, View, TouchableOpacity, useWindowDimensions, S
 import RenderHTML from "react-native-render-html";
 
 export default function ModalDescriacao({magiaSelecionada, setMagiaSelecionada}){
+  
+  useEffect(()=>{
+      if(magiaSelecionada.id){
+          preencherModal()
+          setModalVisivel(true)        
+      }
+  },[magiaSelecionada.id])
 
 const [modalVisivel, setModalVisivel] = useState(false)
-const { width } = useWindowDimensions();
-const source = {html: magiaSelecionada.descricao};
+const [upcast, setUpcast] = useState('')
 
-useEffect(()=>{
-    if(magiaSelecionada.id){
-        setModalVisivel(true)
-        console.log(magiaSelecionada.descricao)      
-    }
-},[magiaSelecionada])
+//preenche renderHTML
+const { width } = useWindowDimensions();
+const source = {html:  `<p style="font-size:16px;">${magiaSelecionada.descricao}</p>`};
+
+//preenche o modal com os dados da mágia
+function preencherModal(){
+
+  setUpcast(magiaSelecionada.upcast)
+}
+
+//limpa os dados da mágia
+function limpaModal(){
+  setUpcast('')
+  setMagiaSelecionada({})
+  setModalVisivel(false)
+}
 
     return(<>
     <Modal
@@ -24,11 +40,23 @@ useEffect(()=>{
         <View style={estilos.centralizaModal}>
             <ScrollView showsVerticalScrollIndicator = {false}>
                 <View style={estilos.modal}>
+                    <Text style={estilos.textNome}>{magiaSelecionada.nome}</Text>
+                    <Text style={estilos.text}>Alcance: {magiaSelecionada.alcance}</Text>
+                    <Text style={estilos.text}>Componentes: {magiaSelecionada.componentes}</Text>
+                    <Text style={estilos.text}>Duração: {magiaSelecionada.duracao}</Text>
+                    <View style={estilos.cardDescricao}>
                     <RenderHTML  
                     contentWidth = {width}
                     source       = {source}/>
-          <TouchableOpacity onPress = {()=>setModalVisivel(false)} style   = {estilos.botaoSair}>
-         <Text>sair</Text>
+                    
+                    {(upcast) ?
+                      <View style={estilos.cardUpcast}>
+                      <Text style={estilos.text}>Em níveis superiores</Text>
+                      <Text style={estilos.textUp}>{upcast}</Text>
+                      </View> : <></>}  
+                    </View>
+          <TouchableOpacity onPress = {()=>limpaModal()} style={estilos.botaoSair}>
+         <Text>Sair</Text>
         </TouchableOpacity>
        </View>
       </ScrollView>
@@ -67,4 +95,25 @@ const estilos = StyleSheet.create({
         flexDirection: "row",
         alignItems: "flex-end"
       },
+      cardDescricao:{
+        borderWidth:3,
+        borderRadius:6,
+        padding:8,
+        paddingTop:0
+      },
+      cardUpcast:{
+        borderRadius:6,
+        borderTopWidth:3
+      },
+      text:{
+        fontSize:18
+      },
+      textUp:{
+        fontSize:16
+      },
+      textNome:{
+        fontSize:30,
+        alignSelf:'center',
+        marginBottom:20
+      }
 })

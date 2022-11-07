@@ -1,0 +1,30 @@
+{
+    "nome":"atributos",
+    "dados":[
+        {
+            "nome":"Força",
+            "abreviacao":"For"
+        },
+        {
+            "nome":"Destreza",
+            "abreviacao":"Des"
+        },
+        {
+            "nome":"Constituição",
+            "abreviacao":"Con"
+        },
+        {
+            "nome":"Inteligência",
+            "abreviacao":"Int"
+        },
+        {
+            "nome":"Sabedoria",
+            "abreviacao":"Sab"
+        },
+        {
+            "nome":"Carisma",
+            "abreviacao":"Car"
+        }
+
+    ]
+}
