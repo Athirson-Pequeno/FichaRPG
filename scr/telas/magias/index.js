@@ -1,5 +1,7 @@
 import React,{useEffect, useState} from "react";
-import { StyleSheet, FlatList, SafeAreaView, TextInput, StatusBar } from "react-native";
+import { StyleSheet, FlatList, TextInput, StatusBar } from "react-native";
+import SafeAreaView from 'react-native-safe-area-view';
+
 import DetalheMagias from "./componentes/detalhesMagias";
 import ModalDescriacao from "./componentes/modalDescricao";
 

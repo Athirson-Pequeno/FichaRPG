@@ -2,9 +2,9 @@ import React from "react";
 import { Text, View, ScrollView } from "react-native";
 import Atributos from "./componentes/atributos";
 import Pericias from "./componentes/pericias";
-import atributosJson from '../../servicos/dados/atributos.json'
 
-export default function TelaPersonagem(atributo){
+
+export default function TelaPersonagem(){
 
     
 

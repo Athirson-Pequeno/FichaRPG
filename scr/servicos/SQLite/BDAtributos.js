@@ -1,23 +1,19 @@
 import { enablePromise, openDatabase, SQLiteDatabase } from 'react-native-sqlite-storage';
 
 
-
-const nomeTabela = 'atributosData';
-
 enablePromise(true);
 
 export const dbConexao = async () => {
-  return openDatabase({ name: 'todo-data.db', location: 'default' });
+  return openDatabase({ name: 'atributos-data.db', location: 'default' });
 };
 
 
 export async function criarTabela(db){
-  // create table if not exists
-  const query = "CREATE TABLE IF NOT EXISTS " +
+  const criar = "CREATE TABLE IF NOT EXISTS " +
   "Atributos "+
-  "(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, abreviacao TEXT);";
+  "(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, abreviacao TEXT, valor INTEGER);";
 
-  await db.executeSql(query);
+  await db.executeSql(criar);
   console.log("tabela Atributos criada")
 };
 
@@ -41,10 +37,16 @@ export const buscarAtributos = async(db) => {
     
 
     export const salvarAtributos = async (db, atributo) => {
-      const salvarItens =
-      "INSERT INTO Atributos (nome, abreviacao) VALUES " +
-        atributo.map(i => `('${i.nome}', '${i.abreviacao}')`).join(',');
+      const salvarItens = "INSERT INTO Atributos (nome, abreviacao, valor) VALUES " +
+        atributo.map(i => `('${i.nome}', '${i.abreviacao}', ${i.valor})`).join(',');
     
       return db.executeSql(salvarItens);
+    
     };
-  
+
+export const atualizarAtributos = async (db, atributo) =>{
+
+    const atualizarItem = `UPDATE Atributos SET nome = '${atributo.nome}', abreviacao = '${atributo.abreviacao}', valor = ${atributo.valor} WHERE id = ${atributo.id};`
+
+    return db.executeSql(atualizarItem)
+  }
