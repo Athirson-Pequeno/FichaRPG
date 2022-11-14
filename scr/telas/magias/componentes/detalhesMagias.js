@@ -12,7 +12,7 @@ export default function DetalheMagias({item, setMagiaSelecionada}){
                 <View style={estilos.cardConjunto}>
                     <View style={estilos.cardNomeENivel}>
                         <Text style={estilos.nomeMagia}>{item.nome}</Text>
-                        <Text style={{fontSize:18}}>nível: {item.nivel}</Text>
+                        <Text style={{fontSize:18, color:"#d1d1d1"}}>nível: {item.nivel}</Text>
                     </View>
                 </View>
                 <View style={estilos.cardNomeClasse}>
@@ -20,12 +20,7 @@ export default function DetalheMagias({item, setMagiaSelecionada}){
                     {arrayClasse.map((key)=>{return ( <Text style={estilos.cardClasse} key={key}> {key} </Text>)})}
                 </View>
                 {(arraySubClasse != '') ? <View style={estilos.cardNomeClasse}><Text style={estilos.textClasse}>Sub-Classes: </Text>{arraySubClasse.map((key)=>{return ( <Text style={estilos.cardClasse} key={key}> {key} </Text>)})}</View> : <></>}
-                {/* <Text style={estilos.cardDescricao}>Alcance: {item.alcance}</Text> */}
-                {/* <View style={estilos.cardDescricao}>
-                 <RenderHTML  
-                    contentWidth={width}
-                    source={source}/> 
-                </View> */}
+
         </TouchableOpacity>
 )
 
@@ -36,7 +31,9 @@ const estilos = StyleSheet.create({
     cardClasse:{
         backgroundColor:'#fffb',
         borderRadius:6,
-        margin:2
+        margin:2, 
+        
+        
     },
     cardDescricao:{
         margin:6,
@@ -48,9 +45,10 @@ const estilos = StyleSheet.create({
     textClasse:{
         fontSize:16,
         marginLeft:3,
+        color:'#d1d1d1'
     },
     cardMagia:{
-        backgroundColor: '#99ccff',
+        backgroundColor: '#760100',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 8,
@@ -60,6 +58,7 @@ const estilos = StyleSheet.create({
     nomeMagia:{
         fontSize:22,
         marginLeft:6,
+        color:'#d1d1d1'
     },
     cardConjunto:{
         flexDirection:'row',

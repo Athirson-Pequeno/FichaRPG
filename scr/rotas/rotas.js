@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Text } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -8,24 +8,55 @@ import TelaMagias from "../telas/magias";
 import TelaPersonagem from "../telas/personagem";
 
 
-export default function Rotas(atributo){
+export default function Rotas(){
     
     const Tab = createBottomTabNavigator();
     return (
         <NavigationContainer >
-            <Tab.Navigator screenOptions={ ({route}) =>({
-                
+            <Tab.Navigator
+        
+            screenOptions={ ({route}) =>({
+                tabBarLabel: ({focused, color, size}) => (
+                    <Text style={{color: focused ? '#760100' : color, fontSize:13}}>
+                        {route.name}
+                        </Text>
+                  ),
                 tabBarIcon: ({ color, size }) => {
                     if(route.name === 'Personagem'){
-                        return <Icon name={'user'} size={size} color={color} />
+                        return <Icon name={'user'} size={size} color={'#760100'} />
 
                     }else{
-                        return <Icon name={'book'} size={size} color={color} />
+                        return <Icon name={'book'} size={size} color={'#760100'} />
                     } 
                 }
+
+                
+
             })}>
-                <Tab.Screen name="Personagem" component={TelaPersonagem}/>
-                <Tab.Screen name="Magias" component={TelaMagias}/>
+                <Tab.Screen 
+                name="Personagem"
+                component={TelaPersonagem}
+                options={{
+                    
+                    headerStyle: {
+                      backgroundColor: '#760100',
+                      elevation:0
+                    },
+                    headerTintColor: '#fff',
+                    
+                  }}
+                 />
+                <Tab.Screen name="Magias" component={TelaMagias}
+                
+                options={{
+                    
+                    headerStyle: {
+                      backgroundColor: '#760100',
+                      elevation:0
+                    },
+                    headerTintColor: '#fff',
+                    
+                  }}/>
             </Tab.Navigator>
         </NavigationContainer>
 

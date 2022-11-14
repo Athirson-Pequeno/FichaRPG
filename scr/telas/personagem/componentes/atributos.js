@@ -1,7 +1,8 @@
 import React,{useEffect, useState} from "react";
-import { Text, TextInput, View, StyleSheet } from "react-native";
+import { Text, TextInput, View, StyleSheet, FlatList } from "react-native";
 import { criarTabela, buscarAtributos, salvarAtributos, dbConexao, atualizarAtributos } from "../../../servicos/SQLite/BDAtributos";
 import atibutoJson from "../../../servicos/dados/atributos.json"
+import RenderAtributos from "./renderAtributos";
 
 
 export default function Atributos(){
@@ -54,8 +55,10 @@ export default function Atributos(){
 
     async function atualizaAtributo(item, valorDigitado){
         
+        
+        if(!isNaN(parseInt(valorDigitado))){
+    
         const array = listaAtributos    
-
         const novoAtr = {
             nome:item.nome,
             id:item.id,
@@ -65,41 +68,29 @@ export default function Atributos(){
 
         array.forEach((element, index)=>{
             if (element.id === item.id){
-                console.log("macthhh!")
-                console.log("item id==="+item.id)
-                console.log("indexas==="+index)
                 if(index > -1){
                     array.splice(index, 1, novoAtr)
                 }
             }
         })
 
-        setListaAtributos(array)
-        console.log(listaAtributos)
-        
+        setListaAtributos(array)        
         const db = await dbConexao();
         atualizarAtributos(db, novoAtr)
 
     }
-
-    function buscarvalor(item){
-        return item.valor.toString()
     }
+
 
     return (<>
         <View style={estilos.containerAtributos}>
-            {listaAtributos.map((item)=>{ return (
-                <View style={estilos.valContainer} key={item.id}>
-                <Text style={estilos.text}>{item.abreviacao}</Text>
-                <TextInput 
-                keyboardType="numeric"
-                defaultValue={item.valor.toString()} 
-                style={estilos.valInput}
-                value={()=>{item.valor.toString()}}
-                onChangeText={(text)=>{atualizaAtributo(item, text.replace(/[^0-9]\s/g, ''))}}
-                ></TextInput>
-                </View>)
-            })}
+        <FlatList
+        
+        data={listaAtributos}
+        renderItem={({item}) => <RenderAtributos item={item} atualizaAtributo={atualizaAtributo}/>}
+        keyExtractor={(item) => item.id}
+        scrollEnabled={false}
+        />  
         </View>
         </>
 )}
