@@ -1,11 +1,13 @@
-import react, { useState } from "react";
+import { useState } from "react";
 import { Text, StyleSheet, View, TextInput } from "react-native";
 
 export default function RenderAtributos({item, atualizaAtributo}){
+
     const [texto, setTexto] = useState(item.valor.toString())
+    const valor = Math.floor((parseInt( texto ) -10)/2)
 
     function atualiza(  item, valorDigitado  ){
-        atualizaAtributo(item, valorDigitado)
+        atualizaAtributo( item, valorDigitado )
     }
 
 
@@ -25,6 +27,13 @@ export default function RenderAtributos({item, atualizaAtributo}){
             
         }}
         ></TextInput>
+         <View style={estilos.viewModificador}>
+        {( valor >= 0) ? <Text style={{ alignSelf:"center"}}>+</Text> : <></>}
+        {(!isNaN(valor))?
+        <Text style={{ alignSelf:"center"}}>{ valor.toString() }</Text>:
+        <Text style={{ alignSelf:"center"}}>0</Text>
+    }
+        </View>
         </View>)
 }
 
@@ -32,13 +41,15 @@ export default function RenderAtributos({item, atualizaAtributo}){
 const estilos = StyleSheet.create({
     valContainer:{
         flexDirection: 'row',
-        marginBottom:5
+        marginBottom:5,
+        alignItems:"center"
     },
     valInput:{
         borderWidth: 3,
         flex:1,
         borderRadius:6,
         paddingHorizontal:8,
+        margin:3
         
     },
     containerAtributos:{
@@ -48,6 +59,16 @@ const estilos = StyleSheet.create({
         margin:6
     },
     text:{
-        flex:2
+        flex:3
+    },
+    viewModificador:{
+        borderWidth:1,
+        padding:2,
+        borderRadius:6,
+        width:30,
+        height:30,
+        flexDirection:"row",
+        justifyContent: "center",
+        flex:1
     }
 })

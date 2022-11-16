@@ -1,40 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
+import RenderPericias from "./renderFlatlist/renderPericias";
 
-const periciasJson = require('../../../servicos/dados/pericias.json')
+export default function Pericias({lista}){
 
-export default function Pericias(){
+    const [listaPericias, setListaPericias] = useState([])
 
-    const [lista, setLista] = useState([])
+    useEffect(()=>{ 
+        setListaPericias(lista)
+    })
 
-    useEffect(()=>{
-        dados()
-    },[])
 
-    const listaPericias = []
 
-    function dados(){
-        periciasJson.dados.forEach((item)=>{
-            const add = `${item.nome} (${item.modificador})`
-            listaPericias.push(add)
-        })
-        setLista(listaPericias)
-    }
-
-    return (<View style={{flex:1, padding:10, borderWidth:1, margin:6}}>
-        {lista.map((item)=>{return ( 
-        <View style={estilos.containerPericia} key={item}>
-        <Text>{item}</Text>
-        <Text style={{borderWidth:1, padding:2, borderRadius:6}}>+0</Text>
-        </View> )})}
-    </View>)
+    return (<>
+    <View style={estilos.containerPericia}>
+        <FlatList
+            data={listaPericias}
+            keyExtractor={(item)=>item.id}
+            renderItem={({item}) => <RenderPericias item={item}/>}
+            scrollEnabled={false}
+        />
+    </View>
+    </>)
 }
 
 const estilos = StyleSheet.create({
+    
     containerPericia:{
-        flexDirection:"row",
-        justifyContent:"space-between",
-        alignItems:"center",
-        marginBottom:5
-    }
+        flex:1,
+        padding:4,
+        backgroundColor:"#c6c6c6"
+    },
 })

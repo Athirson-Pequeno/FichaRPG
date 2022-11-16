@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
 import TelaMagias from "../telas/magias";
 import TelaPersonagem from "../telas/personagem";
+import TelaPersonagens from "../telas/personagens";
 
 
 export default function Rotas(){
@@ -46,9 +47,22 @@ export default function Rotas(){
                     
                   }}
                  />
+
                 <Tab.Screen name="Magias" component={TelaMagias}
                 
                 options={{
+                    
+                    headerStyle: {
+                      backgroundColor: '#760100',
+                      elevation:0
+                    },
+                    headerTintColor: '#fff',
+                    
+                  }}/>
+                  
+                  <Tab.Screen name="Personagens" component={TelaPersonagens}
+                
+                    options={{
                     
                     headerStyle: {
                       backgroundColor: '#760100',
