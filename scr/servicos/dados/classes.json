@@ -1,0 +1,213 @@
+{
+    "nome":"classes",
+    "dados":[
+    {
+        "id":0,
+        "nome":"Selecionar Classe",
+        "subClasse":[{
+            "id":0,
+            "nome":"Selecione a classe primeiro"
+        }]
+    },
+    {
+        "id":1,
+        "nome":"Druida",
+        "subClasse":[{
+            "id":0,
+            "nome":"Círculo da Terra"
+        },{
+            "id":1,
+            "nome":"Círculo da Lua"
+        }]
+    },
+    {
+        "id":2,
+        "nome":"Mago",
+        "subClasse":[{
+            "id":0,
+            "nome":"Escola de Abjuração"
+        },{
+            "id":1,
+            "nome":"Escola da Adivinhção"
+        },{
+            "id":2,
+            "nome":"Escola de Conjuração"
+        },{
+            "id":3,
+            "nome":"Escola de Encantamento"
+        },{
+            "id":4,
+            "nome":"Escola de Evocação"
+        },{
+            "id":5,
+            "nome":"Escola de Ilusão"
+        },{
+            "id":6,
+            "nome":"Escola de Necromancia"
+        },{
+            "id":1,
+            "nome":"Escola de Transmutação"
+        }
+    ]
+    },
+    {
+        "id":3,
+        "nome":"Artífice",
+        "subClasse":[{
+            "id":0,
+            "nome":"Em andamento"
+        }]
+    },
+    {
+        "id":4,
+        "nome":"Paladino",
+        "subClasse":[{
+            "id":0,
+            "nome":"Juramento da Devoção"
+        },{
+            "id":1,
+            "nome":"Juramento dos Anciões"
+        },{
+            "id":2,
+            "nome":"Juramento da Vingança"
+        }]
+    },
+    {
+        "id":5,
+        "nome":"Feiticeiro",
+        "subClasse":[{
+            "id":0,
+            "nome":"Linhagem Dracônica"
+        },{
+            "id":1,
+            "nome":"Magia Selvagem"
+        }]
+    },
+    {
+        "id":6,
+        "nome":"Clérigo",
+        "subClasse":[{
+            "id":0,
+            "nome":"Domínio do Conhecimento"
+        },{
+            "id":1,
+            "nome":"Domínio da Enganação"
+        },{
+            "id":2,
+            "nome":"Domínio da Guerra"
+        },{
+            "id":3,
+            "nome":"Domínio da Luz"
+        },{
+            "id":4,
+            "nome":"Domínio da Natureza"
+        },{
+            "id":5,
+            "nome":"Domínio da Tempestade"
+        },{
+            "id":6,
+            "nome":"Domínio da Vida"
+        }]
+    },
+    {
+        "id":7,
+        "nome":"Bardo",
+        "subClasse":[{
+            "id":0,
+            "nome":"Colégio do Conhecimento"
+        },{
+            "id":1,
+            "nome":"Colégio da Bravura"
+        }]
+    },
+    {
+        "id":8,
+        "nome":"Bruxo",
+        "subClasse":[{
+            "id":0,
+            "nome":"A Arquifada"
+        },{
+            "id":1,
+            "nome":"O Corruptor"
+        },{
+            "id":1,
+            "nome":"O Grande Antigo"
+        }]
+    },
+    {
+        "id":9,
+        "nome":"Guardião",
+        "subClasse":[{
+            "id":0,
+            "nome":"Em andamento"
+        }]
+    },
+    {
+        "id":10,
+        "nome":"Monge",
+        "subClasse":[{
+            "id":0,
+            "nome":"Caminho da Mão Aberta"
+        },{
+            "id":1,
+            "nome":"Caminho da Sombra"
+        },{
+            "id":2,
+            "nome":"Caminho dos Quatro Elementos"
+        }
+    ]},
+    {
+        "id":11,
+        "nome":"Patrulheiro",
+        "subClasse":[{
+            "id":0,
+            "nome":"Conclave da Besta"
+        },{
+            "id":1,
+            "nome":"Conclave do caçador"
+        },{
+            "id":2,
+            "nome":"Conclave do Rastreador Subterrâneo"
+        }]
+    },
+    {
+        "id":12,
+        "nome":"Guerreiro",
+        "subClasse":[{
+            "id":0,
+            "nome":"Campeão"
+        },{
+            "id":1,
+            "nome":"Cavaleiro Arcano"
+        },{
+            "id":2,
+            "nome":"Mestre da Batalha"
+        }]
+    },
+    {
+        "id":13,
+        "nome":"Ladino",
+        "subClasse":[{
+            "id":0,
+            "nome":"Assassino"
+        },{
+            "id":1,
+            "nome":"Ladrão"
+        },{
+            "id":2,
+            "nome":"Trapaceiro Arcano"
+        }]
+    },
+    {
+        "id":14,
+        "nome":"Bárbaro",
+        "subClasse":[{
+            "id":0,
+            "nome":"Caminho do Furioso"
+        },{
+            "id":1,
+            "nome":"Caminho do Guerreiro Totêmico"
+        }]
+    }
+]
+}

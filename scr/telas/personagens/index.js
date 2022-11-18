@@ -1,8 +1,37 @@
-import react from "react";
+import react, { useEffect, useState } from "react";
 import { FlatList, View, Text, TouchableOpacity } from "react-native";
 import RenderPersonagens from "./componentes/renderPersonagens";
+import { DBPersonagensConexao , criarTabelaPersonagens , buscarPersonagens } from "../../servicos/SQLite/BDPersonagens";
+import ModalAddPersonagem from "./componentes/modalAddPersonagem";
 
 export default function TelaPersonagens(){
+
+    const [listaDataPersonagens, setlistaDataPersonagens] = useState([])
+
+    useEffect(() => {
+        async function FluxoDBPersonagens(){
+
+            try{
+
+            const db = await DBPersonagensConexao();
+            criarTabelaPersonagens(db);
+            const listaPersonagens = await buscarPersonagens(db)
+            
+            if (!(listaPersonagens.length === 0)){
+                setlistaDataPersonagens(listaPersonagens)
+            }else{
+                setlistaDataPersonagens(data)
+            }
+        }
+            catch(erro){
+                console.log(erro)
+            }
+
+        }
+        FluxoDBPersonagens()
+    },[])
+
+
     const data = [{
         nome:"Joao",
         classe:"Ladino",
@@ -25,14 +54,22 @@ export default function TelaPersonagens(){
         nivel: 2
     },]
 
-    const cabeça = (<TouchableOpacity style={{borderColor:"#fff", borderWidth:3, margin:6}}><Text style={{fontSize:40, alignSelf:"center"}}>Adicionar</Text></TouchableOpacity>)
+    const cabeça = (
+        <>
+        <ModalAddPersonagem/>
+        </>
+        
+        )
+    
     return (<View>
         
         <FlatList 
         ListHeaderComponent={cabeça}
-        data={data}
+        data={listaDataPersonagens}
         renderItem={({item})=>(<RenderPersonagens item={item}/>)}
         keyExtractor={(item)=>item.id}
         />
+        
+        
     </View>)
 }

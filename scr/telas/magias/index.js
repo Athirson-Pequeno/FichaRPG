@@ -1,30 +1,25 @@
 import React,{useEffect, useState} from "react";
-import { StyleSheet, FlatList, TextInput, StatusBar, Text, View } from "react-native";
+import { StyleSheet, FlatList, TextInput, StatusBar, View } from "react-native";
 import SafeAreaView from 'react-native-safe-area-view';
 import { Picker } from "@react-native-picker/picker";
 
 import DetalheMagias from "./componentes/detalhesMagias";
 import ModalDescriacao from "./componentes/modalDescricao";
 
-
 const magiasJson = require('../../servicos/dados/magiasPT.json');
+const classesJson = require('../../servicos/dados/classes.json')
 
 export default function TelaMagias(){
 
 const lista = []
 const [repoMaster, setRepoMaster] = useState([]);
 const [repoFilter, setRepoFilter] = useState([]);
-const [listaClasse, setListaClasse] = useState([]);
 
 const [textoPesquisa, setTextoPesquisa] = useState('');
 const [classePesquisa, setClassePesquisa] = useState('');
 const [nivelPesquisa, setNivelPesquisa] = useState('');
 
-
 const [magiaSelecionada, setMagiaSelecionada] = useState({});
-
-
-
 
 useEffect(()=>{ 
   dados()
@@ -37,12 +32,11 @@ function dados(){
   })
   setRepoMaster(lista)
   setRepoFilter(lista)
-  setListaClasse(lista)
+  
 }
 
 const pesquisar = (nome, classe, nivel) =>{
 
- 
  if (nome || classe || nivel ){
 
   let letNome
@@ -147,21 +141,15 @@ const pesquisar = (nome, classe, nivel) =>{
       style={{flex:1}}
       selectedValue={classePesquisa}
       onValueChange={(itemValor, itemIndex)=>{
+        if(itemValor === "Selecionar Classe"){
+          itemValor = false
+        }
+
         setClassePesquisa(itemValor)
         pesquisar(textoPesquisa, itemValor, nivelPesquisa)
       }}      
-
       >
-        <Picker.Item label="Selecionar classe" value={false}/>
-        <Picker.Item label="Druida" value="Druida"/>
-        <Picker.Item label="Mago" value="Mago"/>
-        <Picker.Item label="Artífice" value="Artífice"/>
-        <Picker.Item label="Paladino" value="Paladino"/>
-        <Picker.Item label="Feiticeiro" value="Feiticeiro"/>
-        <Picker.Item label="Clérigo" value="Clérigo"/>
-        <Picker.Item label="Bardo" value="Bardo"/>
-        <Picker.Item label="Bruxo" value="Bruxo"/>
-        <Picker.Item label="Guardião" value="Guardião"/>
+        {classesJson.dados.map((item)=>{return <Picker.Item label={item.nome} value={item.nome} key={item.id}/>})}
       </Picker>
 
       </View>

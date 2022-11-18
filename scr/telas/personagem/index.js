@@ -44,7 +44,6 @@ export default function TelaPersonagem(){
                 const atributosDB = await buscarAtributos(db);
                 //faz a lista global de atributos receber os itens do banco de dados
                 setListaAtributos(atributosDB)
-
                 
                 await atualizarPericias("no if")
                 

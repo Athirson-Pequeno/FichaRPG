@@ -55,7 +55,7 @@ function limpaModal(){
                       <Text style={estilos.textUp}>{upcast}</Text>
                       </View> : <></>}  
                     </View>
-          <TouchableOpacity onPress = {()=>limpaModal()} style={estilos.botaoSair}>
+          <TouchableOpacity onPress = {() => limpaModal()} style={estilos.botaoSair}>
          <Text>Sair</Text>
         </TouchableOpacity>
        </View>
