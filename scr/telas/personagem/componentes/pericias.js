@@ -14,12 +14,7 @@ export default function Pericias({lista}){
 
     return (<>
     <View style={estilos.containerPericia}>
-        <FlatList
-            data={listaPericias}
-            keyExtractor={(item)=>item.id}
-            renderItem={({item}) => <RenderPericias item={item}/>}
-            scrollEnabled={false}
-        />
+        {listaPericias.map((item)=>{return <RenderPericias key={item.id} item={item}/>})}
     </View>
     </>)
 }

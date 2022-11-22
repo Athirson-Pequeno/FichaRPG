@@ -91,8 +91,9 @@ const pesquisar = (nome, classe, nivel) =>{
 
      })
 
-     setRepoFilter(novaLista)
+    //lista nome, lista nivel, lista classe })
 
+     setRepoFilter(novaLista)
  }else{
    setRepoFilter(repoMaster)
  }
@@ -137,6 +138,8 @@ const pesquisar = (nome, classe, nivel) =>{
         <Picker.Item label="9" value="9"/>
 
       </Picker>
+
+      
       <Picker
       style={{flex:1}}
       selectedValue={classePesquisa}

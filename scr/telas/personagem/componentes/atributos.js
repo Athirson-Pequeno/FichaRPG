@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet } from "react-native";
 import RenderAtributos from "./renderFlatlist/renderAtributos";
 
 
@@ -14,13 +14,8 @@ export default function Atributos({lista, atualizaAtributo}){
    
     return (<>
         <View style={estilos.containerAtributos}>
-        <FlatList
-        
-        data={listaAtributos}
-        renderItem={({item}) => <RenderAtributos item={item} atualizaAtributo={atualizaAtributo}/>}
-        keyExtractor={(item) => item.id}
-        scrollEnabled={false}
-        />  
+
+        {listaAtributos.map((item)=>{return <RenderAtributos key={item.id} item={item} atualizaAtributo={atualizaAtributo}/>})}
         </View>
         </>
 )}

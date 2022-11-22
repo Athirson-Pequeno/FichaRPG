@@ -3,26 +3,78 @@ import { Modal,Text, TouchableOpacity, View, StyleSheet, TextInput } from "react
 import { Picker } from "@react-native-picker/picker";
 
 const classesJson = require('../../../servicos/dados/classes.json')
+const racaJson = require('../../../servicos/dados/raca.json')
+const atributosJson = require('../../../servicos/dados/atributos.json')
 
 
-export default function ModalAddPersonagem(){
+export default function ModalAddPersonagem({salva}){
     
     const [modalVisivel, setModalVisivel] = useState(false)
     const [classeSelecionada, setClasseSelecionada] = useState()
+
     const [subclasseSelecionada, setsubClasseSelecionada] = useState()
     const [indexClasse, setIndexClasse] = useState(0)
+
+    const [nomePersonagem, setNomePersonagem] = useState('')
+    const [racaSelecionada, setRacaSelecionada] = useState()
 
     useEffect(()=>{
     },[])
 
+    function CriarPersonagem(){
+      
+      
+      //cria uma string com as caracteristicas do personagem para salvar no banco de dados
+      const caracteristicas = JSON.stringify({
+        classe:classeSelecionada,
+        subclasse:subclasseSelecionada,
+        raca:racaSelecionada,
+        nivel:0,
+        vidaTotal:0,
+        vidaTemporaria:0,
+        deslocamento:"",
+        bonusProf:"",
+        armadura:0,
+        dadoDeVida:"",
+        anotacoes:""
+      })
+
+      //cria uma string com os atributos do personagem para salvar no banco de dados
+      const atributos = JSON.stringify(
+        atributosJson.dados.map(item=>{
+          const atributo = {
+            nome:item.nome,
+            abreviacao:item.abreviacao,
+            valor:0
+          }
+          return atributo          
+        })
+      )
+
+      //cria um personagem para salvar no banco de dados
+      const novoPersonagem = {
+        nome:nomePersonagem,
+        caracteristicas:caracteristicas,
+        atributos:atributos
+      }
+
+      setModalVisivel(false)
+
+      salva(novoPersonagem)
+    }
+
+
     
 return <>
+    {/* botao adicionar */}
     <TouchableOpacity 
         style={estilos.botaoAdicionar}
         onPress={() => {setModalVisivel(true)}}>
      <Text style={{fontSize:40, alignSelf:"center"}}>Adicionar</Text>
     </TouchableOpacity>
 
+
+    {/* modal adicionar */}
     <View style={estilos.container}>
         <Modal 
             animationType="slide"
@@ -32,7 +84,17 @@ return <>
 
                 <View style={estilos.centralizaModal}>
                 <View style={estilos.modal}>
-                <TextInput style={estilos.textInput}placeholder={"Nome do personagem"}/>
+                <TextInput 
+                style={estilos.textInput}
+                placeholder={"Nome do personagem"}
+                value={nomePersonagem}
+                onChangeText={(text) =>{ 
+                  setNomePersonagem(text)
+                }}
+                />
+
+
+    {/* picker classe selecionada */}
     <Picker
         selectedValue={classeSelecionada}
         onValueChange={(itemValor, itemIndex)=>{
@@ -45,6 +107,8 @@ return <>
         {classesJson.dados.map((item)=>{return <Picker.Item label={item.nome} value={item.nome} key={item.id}/>})}
      </Picker>
 
+
+    {/* picker subclasse selecionada */}
      <Picker
         selectedValue={subclasseSelecionada}
         onValueChange={(itemValor, itemIndex)=>{
@@ -56,7 +120,22 @@ return <>
         {classesJson.dados[indexClasse].subClasse.map((item)=>{return <Picker.Item label={item.nome} value={item.nome} key={item.id}/>})}
      </Picker>
 
-     <TouchableOpacity  onPress={()=>setModalVisivel(false)}>
+
+      {/* picker raça */}
+      <Picker
+        selectedValue={racaSelecionada}
+        onValueChange={(itemValor, itemIndex)=>{
+            if(itemValor === "Selecionar Raça"){
+                  itemValor = false
+                }
+            setRacaSelecionada(itemValor)
+            }}>
+        {racaJson.dados.map((item)=>{return <Picker.Item label={item.nome} value={item.nome} key={item.id}/>})}
+     </Picker>
+      
+
+      {/* botao salvar personagem */}
+     <TouchableOpacity  onPress={()=>CriarPersonagem()}>
         <Text style={estilos.botaoSair}>Salvar</Text>
      </TouchableOpacity>
     </View>
