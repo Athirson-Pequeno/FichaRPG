@@ -1,18 +1,33 @@
-import { View, Text } from "react-native";
+import React from "react";
+import { Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { useNavigation } from "@react-navigation/core";
 
 export default function RenderPersonagens({item}){
 
+    const navigation = useNavigation();
 
-    const caracteristicas = JSON.parse(item.caracteristicas)
-    const atributo = JSON.parse(item.atributos)
+    const caracteristicas = JSON.parse(item.caracteristicas)    
 
-    console.log(caracteristicas)
-    console.log(atributo)
+    return <TouchableOpacity style={estilos.cardPersonagens}
+        onPress={()=> navigation.navigate('Personagem',{ item })}
+        onLongPress={()=>{Alert.alert("esse é "+item.nome )}}>
 
 
-    return <View style={{flexDirection:"row", justifyContent:"space-between"}}>
         <Text>{item.nome}</Text>
         <Text>{caracteristicas.classe}</Text>
         <Text>{caracteristicas.raca}</Text>
-    </View>
+        <Text>lvl: {caracteristicas.nivel}</Text>
+    </TouchableOpacity>
 }
+
+const estilos = StyleSheet.create({
+    cardPersonagens:{
+        borderWidth:4,
+        borderRadius:10,
+        flexDirection:"row",
+        justifyContent:"space-between",
+        margin:5,
+        padding:8,
+}
+})
+

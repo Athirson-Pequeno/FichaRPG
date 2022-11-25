@@ -3,27 +3,33 @@
     "dados":[
         {
             "nome":"Força",
-            "abreviacao":"For"
+            "abreviacao":"For",
+            "id":0
         },
         {
             "nome":"Destreza",
-            "abreviacao":"Des"
+            "abreviacao":"Des",
+            "id":1
         },
         {
             "nome":"Constituição",
-            "abreviacao":"Con"
+            "abreviacao":"Con",
+            "id":2
         },
         {
             "nome":"Inteligência",
-            "abreviacao":"Int"
+            "abreviacao":"Int",
+            "id":3
         },
         {
             "nome":"Sabedoria",
-            "abreviacao":"Sab"
+            "abreviacao":"Sab",
+            "id":4
         },
         {
             "nome":"Carisma",
-            "abreviacao":"Car"
+            "abreviacao":"Car",
+            "id":5
         }
 
     ]

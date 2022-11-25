@@ -45,7 +45,8 @@ export default function ModalAddPersonagem({salva}){
           const atributo = {
             nome:item.nome,
             abreviacao:item.abreviacao,
-            valor:0
+            valor:0,
+            id:item.id
           }
           return atributo          
         })
@@ -59,7 +60,7 @@ export default function ModalAddPersonagem({salva}){
       }
 
       setModalVisivel(false)
-
+      
       salva(novoPersonagem)
     }
 

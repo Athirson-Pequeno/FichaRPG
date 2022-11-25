@@ -8,6 +8,7 @@ import TelaMagias from "../telas/magias";
 import TelaPersonagem from "../telas/personagem";
 import TelaPersonagens from "../telas/personagens";
 
+import PersonagensRotas from "./personagemRotas";
 
 export default function Rotas(){
     
@@ -34,24 +35,19 @@ export default function Rotas(){
                 
 
             })}>
-                <Tab.Screen 
-                name="Personagem"
-                component={TelaPersonagem}
+            <Tab.Screen 
+                name="Personagens"
+                component={PersonagensRotas}
                 options={{
-                    
                     headerStyle: {
                       backgroundColor: '#760100',
                       elevation:0
                     },
-                    headerTintColor: '#fff',
-                    
-                  }}
-                 />
+                    headerTintColor: '#fff'}}/>
 
-                <Tab.Screen name="Magias" component={TelaMagias}
+            <Tab.Screen name="Magias" component={TelaMagias}
                 
                 options={{
-                    
                     headerStyle: {
                       backgroundColor: '#760100',
                       elevation:0
@@ -60,17 +56,6 @@ export default function Rotas(){
                     
                   }}/>
                   
-                  <Tab.Screen name="Personagens" component={TelaPersonagens}
-                
-                    options={{
-                    
-                    headerStyle: {
-                      backgroundColor: '#760100',
-                      elevation:0
-                    },
-                    headerTintColor: '#fff',
-                    
-                  }}/>
             </Tab.Navigator>
         </NavigationContainer>
 

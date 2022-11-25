@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Text, StyleSheet, View, TextInput } from "react-native";
 
-export default function RenderAtributos({item, atualizaAtributo}){
+export default function RenderAtributos({item, atualizarAtributos}){
 
     const [texto, setTexto] = useState(item.valor.toString())
     const valor = Math.floor((parseInt( texto ) -10)/2)
 
     function atualiza(  item, valorDigitado  ){
-        atualizaAtributo( item, valorDigitado )
+        atualizarAtributos( item, valorDigitado )
     }
 
 

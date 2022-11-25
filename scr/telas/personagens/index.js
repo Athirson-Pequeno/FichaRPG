@@ -15,10 +15,14 @@ export default function TelaPersonagens(){
             try{
             //cria uma conexao com o banco de dados
             const db = await DBPersonagensConexao();
+
             //cria a tabela personagens
             criarTabelaPersonagens(db);
+
             //busca os personagens
             const listaPersonagens = await buscarPersonagens(db)
+
+            //configura a lista com o resultado do banco de dados
             setlistaDataPersonagens(listaPersonagens)
             
         }
@@ -31,20 +35,18 @@ export default function TelaPersonagens(){
     },[])
 
     async function salva(item){
-
-        const resultado = []
-        resultado.push(item)
-        console.log(resultado)
-
+        //inicia conexão com o banco de dados
         const db = await DBPersonagensConexao();
-        salvarPersonagem(db, resultado)
 
+        //salvaPersonagem
+        salvarPersonagem(db, item)
+
+        //busca os personagens salvos
         const listaPersonagens = await buscarPersonagens(db)
-        console.log(listaPersonagens)
+
+        //atualiza lista de personagens
         setlistaDataPersonagens(listaPersonagens)
 
-
-        
     }
 
 

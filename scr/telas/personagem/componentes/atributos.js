@@ -3,7 +3,8 @@ import { View, StyleSheet } from "react-native";
 import RenderAtributos from "./renderFlatlist/renderAtributos";
 
 
-export default function Atributos({lista, atualizaAtributo}){
+export default function Atributos({lista, atualizarAtributos}){
+
 
     const [listaAtributos, setListaAtributos] = useState([])
 
@@ -12,12 +13,9 @@ export default function Atributos({lista, atualizaAtributo}){
     })
 
    
-    return (<>
-        <View style={estilos.containerAtributos}>
-
-        {listaAtributos.map((item)=>{return <RenderAtributos key={item.id} item={item} atualizaAtributo={atualizaAtributo}/>})}
+    return (<View style={estilos.containerAtributos}>
+        {listaAtributos.map((item)=>{return <RenderAtributos key={item.id} item={item} atualizarAtributos={atualizarAtributos}/>})}
         </View>
-        </>
 )}
 
 
