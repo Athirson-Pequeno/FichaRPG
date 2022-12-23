@@ -5,6 +5,7 @@ import { Picker } from "@react-native-picker/picker";
 const classesJson = require('../../../servicos/dados/classes.json')
 const racaJson = require('../../../servicos/dados/raca.json')
 const atributosJson = require('../../../servicos/dados/atributos.json')
+const periciasJson = require('../../../servicos/dados/pericias.json')
 
 
 export default function ModalAddPersonagem({salva}){
@@ -52,11 +53,36 @@ export default function ModalAddPersonagem({salva}){
         })
       )
 
+      //cria uma string com as pericias do personagem para salvar no banco de dados
+      const listaPushPericias = []
+      const arrayPericias = periciasJson
+      const arrayAtributos = JSON.parse(atributos)
+
+      arrayPericias.dados.forEach((item, itemIndex)=>{
+        arrayAtributos.forEach((element)=>{
+            if (element.abreviacao === item.modificador){                
+                const objAtr ={
+                    nome: item.nome,
+                    modificador:item.modificador,
+                    id:itemIndex,
+                    valor: element.valor,
+                    selecionado: false
+                }
+                //adicona o objeto criado na lisa de pericias
+                listaPushPericias.push(objAtr)
+          }
+        })
+    })
+    const pericias = JSON.stringify(listaPushPericias)
+
+
+
       //cria um personagem para salvar no banco de dados
       const novoPersonagem = {
         nome:nomePersonagem,
         caracteristicas:caracteristicas,
-        atributos:atributos
+        atributos:atributos,
+        pericias:pericias
       }
 
       setModalVisivel(false)
@@ -71,7 +97,7 @@ return <>
     <TouchableOpacity 
         style={estilos.botaoAdicionar}
         onPress={() => {setModalVisivel(true)}}>
-     <Text style={{fontSize:40, alignSelf:"center"}}>Adicionar</Text>
+     <Text style={estilos.textoAdicionar}>Adicionar</Text>
     </TouchableOpacity>
 
 
@@ -178,16 +204,22 @@ const estilos = StyleSheet.create({
         alignItems: "flex-end",
       },
       botaoAdicionar:{
-        borderColor:"#fff",
-        borderWidth:3,
-        margin:6
+        margin:6,
+        backgroundColor:"#FFF",
+        borderRadius:10,
+        alignItems:"center"
       },
       container:{ 
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
-    },
-    textInput:{
+      },
+      textInput:{
         borderWidth:3
+      },
+      textoAdicionar:{
+      fontSize:40,
+      alignSelf:"center",
+      
     }
 })

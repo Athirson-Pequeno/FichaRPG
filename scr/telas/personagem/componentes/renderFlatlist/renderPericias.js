@@ -1,18 +1,22 @@
-import react, { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-export default function RenderPericias({item}){
+export default function RenderPericias({item, atualizarPericiasDB}){
 
     const valor = Math.floor((parseInt( item.valor) -10)/2)
 
-    const [cor, setCor] = useState("#f00")
-    const estilos = estilosFuncao(cor)
+    const [selecionado, setSelecionado] = useState(item.selecionado)
+    const estilos = estilosFuncao(selecionado)
+
+    function atualizar(){
+        setSelecionado(!selecionado)
+        atualizarPericiasDB(item.id)
+    }
 
    return (<TouchableOpacity 
    style={estilos.containerPericia}
-   onPress={()=> setCor("#d0d")}
-   >
-        <Text>{item.texto}</Text>
+   onPress={()=> atualizar()}>
+        <Text>{item.nome} ({item.modificador})</Text>
         <View style={estilos.viewModificador}>
         {( valor >= 0) ? <Text style={{ alignSelf:"center"}}>+</Text> : <></>}
         <Text style={{ alignSelf:"center"}}>{ valor.toString() }</Text>
@@ -20,13 +24,15 @@ export default function RenderPericias({item}){
         </TouchableOpacity>)
 }
 
-const estilosFuncao = (cor) => StyleSheet.create({
+const estilosFuncao = (selecionado) => StyleSheet.create({
     containerPericia:{
         flexDirection:"row",
         justifyContent:"space-between",
         alignItems:"center",
         marginBottom:5,
-        backgroundColor: cor
+        backgroundColor: selecionado ? "#760100" : "#424149",
+        paddingHorizontal:6,
+        borderRadius:6
 
     },
     viewModificador:{
@@ -36,6 +42,8 @@ const estilosFuncao = (cor) => StyleSheet.create({
         width:30,
         height:30,
         flexDirection:"row",
-        justifyContent: "center"
+        justifyContent: "center",
+        margin:3,
+
     }
 })

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import RenderAtributos from "./renderFlatlist/renderAtributos";
 
 
@@ -14,6 +14,7 @@ export default function Atributos({lista, atualizarAtributos}){
 
    
     return (<View style={estilos.containerAtributos}>
+        <Text style={{alignSelf:"center", fontSize:20}}>Atributos</Text>
         {listaAtributos.map((item)=>{return <RenderAtributos key={item.id} item={item} atualizarAtributos={atualizarAtributos}/>})}
         </View>
 )}
@@ -35,7 +36,6 @@ const estilos = StyleSheet.create({
     containerAtributos:{
         flex:1,
         padding:4,
-        backgroundColor:"#c6c6c6"
     },
     text:{
         flex:2

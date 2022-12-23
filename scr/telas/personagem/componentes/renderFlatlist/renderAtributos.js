@@ -42,14 +42,18 @@ const estilos = StyleSheet.create({
     valContainer:{
         flexDirection: 'row',
         marginBottom:5,
-        alignItems:"center"
+        alignItems:"center",
+        backgroundColor:"#424149",
+        paddingHorizontal:6,
+        borderRadius:6
     },
     valInput:{
-        borderWidth: 3,
+        borderWidth: 2,
         flex:1,
         borderRadius:6,
         paddingHorizontal:8,
-        margin:3
+        margin:3,
+        height:30
         
     },
     containerAtributos:{
@@ -62,7 +66,7 @@ const estilos = StyleSheet.create({
         flex:3
     },
     viewModificador:{
-        borderWidth:1,
+        borderWidth:2,
         padding:2,
         borderRadius:6,
         width:30,

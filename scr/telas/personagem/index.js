@@ -5,12 +5,10 @@ import { useRoute } from "@react-navigation/native";
 //componentes da tela personagem
 import Atributos from "./componentes/atributos";
 import Pericias from "./componentes/pericias";
-
-//funcoes do banco de dados
-import periciasJson from "../../servicos/dados/pericias.json"
+import Caracteristicas from "./componentes/caracteristicas";
 
 //funcoes do banco de dados personagem
-import { atualizarAtributosPersonagem, DBPersonagensConexao, buscarPersonagem } from "../../servicos/SQLite/BDPersonagens";
+import { atualizarPericiasPersonagem, atualizarAtributosPersonagem, DBPersonagensConexao, buscarPersonagem } from "../../servicos/SQLite/BDPersonagens";
 
 export default function TelaPersonagem(){
     //coleta os dados do personagem que sao passados pelas rotas
@@ -19,9 +17,12 @@ export default function TelaPersonagem(){
     const idPersonagem = item.id
     const caracteristicas = JSON.parse(item.caracteristicas)
     
+    
     //inicia os hooks das listas que serao usadas no render
     const [listaPericias, setListaPericias] = useState([])
     const [listaAtributos, setListaAtributos] = useState([])
+
+    const [dbConexao, setDbConexao] = useState()
 
 
     useEffect(()=>{    
@@ -33,10 +34,13 @@ export default function TelaPersonagem(){
                 //obtem os dados do personagem pelo id
                 const dadosPersonagemDB = await buscarPersonagem(db, idPersonagem)
                 //converter o texto salvo no banco de dados em um objeto
-                const atributosPersonagemDB = JSON.parse(dadosPersonagemDB[0].atributos)
+                const atributosPersonagemDB = JSON.parse(dadosPersonagemDB[0].atributos)                    
+                const periciasPersonagemDB = JSON.parse(dadosPersonagemDB[0].pericias)
 
                 //configura a lista de atributos
                 setListaAtributos(atributosPersonagemDB)
+                //configura a lista de pericias
+                setListaPericias(periciasPersonagemDB)
 
                 //atualiza as pericias com os valores do banco de dados
                 atualizarPericias()
@@ -59,33 +63,27 @@ export default function TelaPersonagem(){
 
         //cria uma lista vazia onde sera adicionada as pericias
         const listaPushPericias = []
-        //pega o valor do JSON importado
-        const array = periciasJson
-
-
+        
+        
         //cria uma conexao com o banco de dados
         const db = await DBPersonagensConexao();
         //obtem os dados do personagem pelo id
-        const dadosPersonagem = await buscarPersonagem(db, idPersonagem)
+        const dadosPersonagemDB = await buscarPersonagem(db, idPersonagem)
         //converter o texto salvo no banco de dados em um objeto
-        const atributosDB = JSON.parse(dadosPersonagem[0].atributos)
+        const atributosDB = JSON.parse(dadosPersonagemDB[0].atributos)
+        //pega o valor do JSON importado
+        const arrayPericias = JSON.parse(dadosPersonagemDB[0].pericias)
   
        //cria uma nova lista de pericias para ser usada no render
-        array.dados.forEach((item, itemIndex)=>{
+        arrayPericias.forEach((item)=>{
             atributosDB.forEach((element)=>{
                 if (element.abreviacao === item.modificador){
-                    const textoAdd = `${item.nome} (${item.modificador})`
-                    const objAtr ={
-                        id:itemIndex,
-                        texto: textoAdd,
-                        valor: element.valor
-                    }
+                    item.valor = element.valor,                       
                     //adicona o objeto criado na lisa de pericias
-                    listaPushPericias.push(objAtr)
-              }
-            })
+                    listaPushPericias.push(item)
+                }})
         })
-        
+
         //configura a lista de pericia para a nova lista criada
         setListaPericias(listaPushPericias)
       
@@ -98,8 +96,10 @@ export default function TelaPersonagem(){
         
         //cria uma conexao com o banco de dados
         const db = await DBPersonagensConexao();
+
         //obtem os dados do personagem pelo id
         const dadosPersonagemDB = await buscarPersonagem(db, idPersonagem)
+        
         //converter o texto salvo no banco de dados em um objeto
         const atributosPersonagemDB = JSON.parse(dadosPersonagemDB[0].atributos)
 
@@ -145,37 +145,44 @@ export default function TelaPersonagem(){
 
     }
 
-    return (<ScrollView>
-    {/* <Text>nome</Text>
-    <Text>classe</Text>
-    <Text>nivel</Text>
-    <Text>vida</Text>
-    <Text>Ca</Text>
-    <Text>raca</Text>
-    <Text>bonus proficiencia</Text>
-    <Text>deslocamento</Text>
-    <Text>dado de vida</Text> */}
+    async function atualizarPericiasDB(itemNovo){
+
+        const novaListaPericias = []
+
+        //cria a conexão com o banco de dados
+        const db = await DBPersonagensConexao()
+
+        //busca os dados do personagem atual
+        const dadosPersonagemDB = await buscarPersonagem(db, idPersonagem)
 
 
-    {/* nome do personagem parte em desenvolvimento */}
-    {/* <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{item.nome}</Text>
-    <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{caracteristicas.classe}</Text>
-    <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{caracteristicas.subclasse}</Text>
-    <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{caracteristicas.raca}</Text>
-    <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{caracteristicas.nivel}</Text>
-    <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{caracteristicas.vidaTotal}</Text>
-    <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{caracteristicas.vidaTemporaria}</Text>
-    <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{caracteristicas.deslocamento}</Text>
-    <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{caracteristicas.bonusProf}</Text>
-    <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{caracteristicas.armadura}</Text>
-    <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{caracteristicas.dadoDeVida}</Text>
-    <Text style={{fontSize:28, backgroundColor:'#ff6'}}>{caracteristicas.anotacoes}</Text> */}
+        const periciasPersonagemDB = JSON.parse(dadosPersonagemDB[0].pericias)
 
-    <View style={{flexDirection:"row", flex:1}}>
+        periciasPersonagemDB.forEach((item)=>{
+            if (item.id === itemNovo){
+                item.selecionado = !item.selecionado
+                novaListaPericias.push(item)
+            }else{
+                novaListaPericias.push(item)
+            }
+        })
+
+        const novasPericias = JSON.stringify(novaListaPericias)
+
+        await atualizarPericiasPersonagem(db, novasPericias, idPersonagem)
+
+    }
+
+    return (<ScrollView >
+ 
+    <Caracteristicas caracteristicas={caracteristicas} nome={item.nome}/>
+
+    <View style={{flexDirection:"row", flex:1, borderTopColor:"black", borderTopWidth:5}}>
         {/* atributos do personagem */}
+        
         <Atributos lista={listaAtributos} atualizarAtributos={atualizarAtributos} />
         {/* pericias do personagem */}
-        <Pericias lista={listaPericias} />
+        <Pericias lista={listaPericias} atualizarPericiasDB={atualizarPericiasDB}/>
    </View>
 
    </ScrollView>)

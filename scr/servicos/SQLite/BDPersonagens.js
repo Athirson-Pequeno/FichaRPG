@@ -11,7 +11,7 @@ export const criarTabelaPersonagens = async (db) => {
 
     const criar = "CREATE TABLE IF NOT EXISTS " +
     "Personagens " +
-    "(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, caracteristicas TEXT, atributos TEXT);";
+    "(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, caracteristicas TEXT, atributos TEXT, pericias TEXT);";
 
     return await db.executeSql(criar);
 }
@@ -56,8 +56,8 @@ export const buscarPersonagem = async (db, idPersonagem) =>{
 
 export const salvarPersonagem =  async (db, personagem) =>{
     
-    const salvar = `INSERT INTO Personagens (nome, caracteristicas, atributos) VALUES 
-    ('${personagem.nome}', '${personagem.caracteristicas}', '${personagem.atributos}');`
+    const salvar = `INSERT INTO Personagens (nome, caracteristicas, atributos, pericias) VALUES 
+    ('${personagem.nome}', '${personagem.caracteristicas}', '${personagem.atributos}', '${personagem.pericias}');`
 
     return db.executeSql(salvar)
 
@@ -65,6 +65,13 @@ export const salvarPersonagem =  async (db, personagem) =>{
 
 export const atualizarAtributosPersonagem = async (db, atributos, idPersonagem) =>{
     const atualizar = `UPDATE Personagens SET atributos = '${atributos}' WHERE id = ${idPersonagem}`
+
+    return db.executeSql(atualizar)
+}
+
+
+export const atualizarPericiasPersonagem = async (db, pericias, idPersonagem) =>{
+    const atualizar = `UPDATE Personagens SET pericias = '${pericias}' WHERE id = ${idPersonagem}`
 
     return db.executeSql(atualizar)
 }

@@ -5,8 +5,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Icon from 'react-native-vector-icons/Feather';
 import TelaMagias from "../telas/magias";
-import TelaPersonagem from "../telas/personagem";
-import TelaPersonagens from "../telas/personagens";
 
 import PersonagensRotas from "./personagemRotas";
 
@@ -15,20 +13,19 @@ export default function Rotas(){
     const Tab = createBottomTabNavigator();
     return (
         <NavigationContainer >
-            <Tab.Navigator
-        
+            <Tab.Navigator 
             screenOptions={ ({route}) =>({
-                tabBarLabel: ({focused, color, size}) => (
-                    <Text style={{color: focused ? '#760100' : color, fontSize:13}}>
+                tabBarLabel: ({focused, color}) => (
+                    <Text style={{color: focused ? 'red' : color, fontSize:13}}>
                         {route.name}
                         </Text>
                   ),
-                tabBarIcon: ({ color, size }) => {
-                    if(route.name === 'Personagem'){
-                        return <Icon name={'user'} size={size} color={'#760100'} />
-
+                tabBarIcon: ({ color, size, focused }) => {
+                    
+                    if(route.name === 'Personagens'){
+                        return <Icon name={'user'} size={size} color={focused ? 'red' : color} />
                     }else{
-                        return <Icon name={'book'} size={size} color={'#760100'} />
+                        return <Icon name={'book'} size={size} color={focused ? 'red' : color} />
                     } 
                 }
 
