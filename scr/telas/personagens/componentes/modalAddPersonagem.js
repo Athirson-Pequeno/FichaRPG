@@ -27,17 +27,17 @@ export default function ModalAddPersonagem({salva}){
       
       //cria uma string com as caracteristicas do personagem para salvar no banco de dados
       const caracteristicas = JSON.stringify({
-        classe:classeSelecionada,
-        subclasse:subclasseSelecionada,
-        raca:racaSelecionada,
-        nivel:0,
-        vidaTotal:0,
-        vidaTemporaria:0,
-        deslocamento:"",
-        bonusProf:"",
-        armadura:0,
-        dadoDeVida:"",
-        anotacoes:""
+        Classe:classeSelecionada,
+        Sub_Classe:subclasseSelecionada,
+        Raça:racaSelecionada,
+        Nível:0,
+        Vida_Total:0,
+        Vida_Temporária:0,
+        Deslocamento:"0m",
+        Bônus_de_Proficiência:"+0",
+        Armadura:0,
+        Dado_de_Vida:"1d6 + Const",
+        Anotações:"Anotações importantes"
       })
 
       //cria uma string com os atributos do personagem para salvar no banco de dados
@@ -144,6 +144,7 @@ return <>
                 }
             setsubClasseSelecionada(itemValor)
           }}>
+        <Picker.Item label="Selecione uma subclasse" value="selecionar" ></Picker.Item>
         {classesJson.dados[indexClasse].subClasse.map((item)=>{return <Picker.Item label={item.nome} value={item.nome} key={item.id}/>})}
      </Picker>
 
@@ -220,6 +221,5 @@ const estilos = StyleSheet.create({
       textoAdicionar:{
       fontSize:40,
       alignSelf:"center",
-      
     }
 })

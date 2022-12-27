@@ -14,9 +14,9 @@ export default function RenderPersonagens({item}){
 
 
         <Text>{item.nome}</Text>
-        <Text>{caracteristicas.classe}</Text>
-        <Text>{caracteristicas.raca}</Text>
-        <Text>lvl: {caracteristicas.nivel}</Text>
+        <Text>{caracteristicas.Classe}</Text>
+        <Text>{caracteristicas.Raça}</Text>
+        <Text>lvl: {caracteristicas.Nível}</Text>
     </TouchableOpacity>
 }
 
