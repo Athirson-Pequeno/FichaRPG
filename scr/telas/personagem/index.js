@@ -179,10 +179,14 @@ export default function TelaPersonagem(){
     async function atualizarCaracteristicas(valorNovo, elemento){
 
         const db = await DBPersonagensConexao()
-        
-        caracteristicas[elemento] = valorNovo
 
-        const  novasCaracteristicas = JSON.stringify(caracteristicas)
+        const dadosPersonagemDB = await buscarPersonagem(db, idPersonagem)
+
+        const caracteristicasDB = JSON.parse(dadosPersonagemDB[0].caracteristicas)
+        
+        caracteristicasDB[elemento] = valorNovo
+
+        const novasCaracteristicas = JSON.stringify(caracteristicasDB)
 
         atualizarCaracteristicasPersonagem(db, novasCaracteristicas, idPersonagem)
 
