@@ -4,7 +4,7 @@ import RenderCaracteristicas from "./renderFlatlist/renderCaracteristicas";
 
 
 
-export default function caracteristicas({caracteristicas, nome}){
+export default function caracteristicas({caracteristicas, nome, atualizarCaracteristicas, atualizarNome}){
     const [nomePersonagem, setNomePersonagem] = useState(nome);
     
     const keys = Object.entries(caracteristicas)
@@ -18,97 +18,23 @@ export default function caracteristicas({caracteristicas, nome}){
         n = n+2
     }})
     return (
-    <View>
+    <View style={{marginBottom:8}}>
 
     <View style={estilos.viewStyle}>
     <Text style={estilos.textStyle}>Nome</Text>
     <TextInput
       placeholder={nomePersonagem}
       value={nomePersonagem}
-      onChangeText={text => setNomePersonagem(text)}
+      onChangeText={text => {
+        setNomePersonagem(text)
+        atualizarNome(text)
+    }}
       style={{fontSize:28}}/>
       </View>
     {/* nome do personagem parte em desenvolvimento */}
-    {lista.map((elemento) =>{ return <RenderCaracteristicas key={elemento} elemento={elemento}/> })}
+    {lista.map((elemento) =>{ return <RenderCaracteristicas key={elemento} elemento={elemento} atualizarCaracteristicas={atualizarCaracteristicas}/> })}
     
-    {/* <View style={estilos.viewHorizontal}>    
-
-        <View style={[estilos.viewStyle, {flex:1}]}>
-            <Text style={estilos.textStyle}>Classe</Text>
-            <Text style={{fontSize:28}}>{caracteristicas.classe}</Text>
-        </View>
-
-        <View style={[estilos.viewStyle, {flex:1}]}>
-            <Text style={estilos.textStyle}>Sub-Classe</Text>
-            <Text style={{fontSize:28}}>{caracteristicas.subclasse}</Text>
-        </View> 
-
-    </View>
-
-    <View style={estilos.viewHorizontal}>  
-        <View style={[estilos.viewStyle, {flex:1}]}>
-                <Text style={estilos.textStyle}>Raça</Text>
-                <Text style={{fontSize:28}}>{caracteristicas.raca}</Text>
-        </View>
-
-        <View style={[estilos.viewStyle, {flex:1}]}>
-                <Text style={estilos.textStyle}>Nível</Text>
-                <Text style={{fontSize:28}}>{caracteristicas.nivel}</Text>
-        </View>
-    </View>
-
-    <View style={estilos.viewHorizontal}>   
-    
-        <View style={[estilos.viewStyle, {flex:1}]}>
-            <Text style={estilos.textStyle}>Vida Total</Text>
-            <Text style={{fontSize:28}}>{caracteristicas.vidaTotal}</Text>
-        </View>
-
-        <View style={[estilos.viewStyle, {flex:1}]}>
-            <Text style={estilos.textStyle}>Vida Temporaria</Text>
-            <Text style={{fontSize:28}}>{caracteristicas.vidaTemporaria}</Text>
-        </View> 
-
-    </View>
-
-
-    <View style={estilos.viewHorizontal}>   
-    
-        <View style={[estilos.viewStyle, {flex:1}]}>
-            <Text style={estilos.textStyle}>Deslocamento</Text>
-            <Text style={{fontSize:28}}>{caracteristicas.deslocamento}</Text>
-        </View>
-
-        <View style={[estilos.viewStyle, {flex:1}]}>
-            <Text style={estilos.textStyle}>Bônus de Proficiencia</Text>
-            <Text style={{fontSize:28}}>{caracteristicas.bonusProf}</Text>
-        </View> 
-    
-    </View>
-    
-    
-    <View style={estilos.viewHorizontal}>   
-    
-        <View style={[estilos.viewStyle, {flex:1}]}>
-            <Text style={estilos.textStyle}>Armadura</Text>
-            <Text style={{fontSize:28}}>{caracteristicas.armadura}</Text>
-        </View>
-
-        <View style={[estilos.viewStyle, {flex:1}]}>
-            <Text style={estilos.textStyle}>Dado de Vida</Text>
-            <Text style={{fontSize:28}}>{caracteristicas.dadoDeVida}</Text>
-        </View> 
-    
-    </View>
-
-
-    <View style={[estilos.viewStyle, {flex:1}]}>
-
-        <Text style={estilos.textStyle}>Anotações</Text>
-        <Text style={{fontSize:28}}>{caracteristicas.anotacoes}</Text>
-
-    </View> */}
-</View>)
+    </View>)
 }
 
 const estilos = StyleSheet.create({

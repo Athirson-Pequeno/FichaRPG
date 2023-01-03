@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import { View, Text , StyleSheet, TextInput } from "react-native";
 
-export default function RenderCaracteristicas({elemento}){
+export default function RenderCaracteristicas({elemento, atualizarCaracteristicas}){
     const [primeiroElemento, setprimeiroElemento] = useState((elemento[0][1]).toString());
     const [segundoElemento, setsegundoElemento] = useState((elemento[1][1]).toString());
     
@@ -11,20 +11,26 @@ export default function RenderCaracteristicas({elemento}){
             <View style={[estilos.viewStyle, {flex:1}]}>
                 <Text style={estilos.textStyle}>{(elemento[0][0]).toString().replace(/_/g," ")}</Text>
                 <TextInput
-                    placeholder={primeiroElemento}
                     value={primeiroElemento}
                     multiline={true}
-                    onChangeText={text => setprimeiroElemento(text)}
+                    onChangeText={text => 
+                        {
+                            setprimeiroElemento(text)
+                            atualizarCaracteristicas(text, (elemento[0][0]).toString())
+                            
+                        }
+                    }
                     style={{fontSize:28, width:'100%'}}/>           
             </View>
 
             <View style={[estilos.viewStyle, {flex:1}]}>
                 <Text style={estilos.textStyle}>{(elemento[1][0]).toString().replace(/_/g," ")}</Text>
                     <TextInput
-                    placeholder={segundoElemento}
                     value={segundoElemento}
                     multiline={true}
-                    onChangeText={text => setsegundoElemento(text)}
+                    onChangeText={text => {
+                        setsegundoElemento(text)
+                        atualizarCaracteristicas(text, (elemento[1][0]).toString())}}
                     style={{fontSize:28, width:"100%"}}/>
             </View>
 

@@ -28,10 +28,10 @@ export default function RenderAtributos({item, atualizarAtributos}){
         }}
         ></TextInput>
          <View style={estilos.viewModificador}>
-        {( valor >= 0) ? <Text style={{ alignSelf:"center"}}>+</Text> : <></>}
+        {( valor >= 0) ? <Text style={{ alignSelf:"center", color:"#fff"}}>+</Text> : <></>}
         {(!isNaN(valor))?
-        <Text style={{ alignSelf:"center"}}>{ valor.toString() }</Text>:
-        <Text style={{ alignSelf:"center"}}>0</Text>
+        <Text style={{ alignSelf:"center", color:"#fff"}}>{ valor.toString() }</Text>:
+        <Text style={{ alignSelf:"center", color:"#fff"}}>0</Text>
     }
         </View>
         </View>)
@@ -53,7 +53,9 @@ const estilos = StyleSheet.create({
         borderRadius:6,
         paddingHorizontal:8,
         margin:3,
-        height:30
+        height:30,
+        borderColor:"#fff",
+        color:"#fff"
         
     },
     containerAtributos:{
@@ -63,7 +65,8 @@ const estilos = StyleSheet.create({
         margin:6
     },
     text:{
-        flex:3
+        flex:3,
+        color:"#fff"
     },
     viewModificador:{
         borderWidth:2,
@@ -73,6 +76,8 @@ const estilos = StyleSheet.create({
         height:30,
         flexDirection:"row",
         justifyContent: "center",
-        flex:1
+        flex:1,
+        borderColor:"#fff",
+        
     }
 })

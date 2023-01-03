@@ -1,4 +1,4 @@
-import React,{ useState, useEffect} from "react";
+import React,{ useState, useEffect, useContext} from "react";
 import { View, ScrollView, Text } from "react-native";
 import { useRoute } from "@react-navigation/native";
 
@@ -8,7 +8,8 @@ import Pericias from "./componentes/pericias";
 import Caracteristicas from "./componentes/caracteristicas";
 
 //funcoes do banco de dados personagem
-import { atualizarPericiasPersonagem, atualizarAtributosPersonagem, DBPersonagensConexao, buscarPersonagem } from "../../servicos/SQLite/BDPersonagens";
+import { atualizarNomePersonagem ,atualizarCaracteristicasPersonagem ,atualizarPericiasPersonagem, atualizarAtributosPersonagem, DBPersonagensConexao, buscarPersonagem } from "../../servicos/SQLite/BDPersonagens";
+import { CaracteristicasContext } from "../../contexts/CaracteristicasContext";
 
 export default function TelaPersonagem(){
     //coleta os dados do personagem que sao passados pelas rotas
@@ -22,7 +23,8 @@ export default function TelaPersonagem(){
     const [listaPericias, setListaPericias] = useState([])
     const [listaAtributos, setListaAtributos] = useState([])
 
-    const [dbConexao, setDbConexao] = useState()
+    const {aleracao, setAlteracao} = useContext(CaracteristicasContext)
+
 
 
     useEffect(()=>{    
@@ -173,9 +175,32 @@ export default function TelaPersonagem(){
 
     }
 
+
+    async function atualizarCaracteristicas(valorNovo, elemento){
+
+        const db = await DBPersonagensConexao()
+        
+        caracteristicas[elemento] = valorNovo
+
+        const  novasCaracteristicas = JSON.stringify(caracteristicas)
+
+        atualizarCaracteristicasPersonagem(db, novasCaracteristicas, idPersonagem)
+
+        setAlteracao(!aleracao)
+
+    }
+
+    async function atualizarNome(novoNome){
+        const db = await DBPersonagensConexao()
+
+        atualizarNomePersonagem(db, novoNome, idPersonagem)
+
+        setAlteracao(!aleracao)
+    }
+
     return (<ScrollView >
  
-    <Caracteristicas caracteristicas={caracteristicas} nome={item.nome}/>
+    <Caracteristicas caracteristicas={caracteristicas} nome={item.nome} atualizarCaracteristicas={atualizarCaracteristicas} atualizarNome={atualizarNome}/>
 
     <View style={{flexDirection:"row", flex:1, borderTopColor:"black", borderTopWidth:5}}>
         {/* atributos do personagem */}

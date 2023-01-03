@@ -16,10 +16,10 @@ export default function RenderPericias({item, atualizarPericiasDB}){
    return (<TouchableOpacity 
    style={estilos.containerPericia}
    onPress={()=> atualizar()}>
-        <Text>{item.nome} ({item.modificador})</Text>
+        <Text style={{color:"#fff"}}>{item.nome} ({item.modificador})</Text>
         <View style={estilos.viewModificador}>
-        {( valor >= 0) ? <Text style={{ alignSelf:"center"}}>+</Text> : <></>}
-        <Text style={{ alignSelf:"center"}}>{ valor.toString() }</Text>
+        {( valor >= 0) ? <Text style={{ alignSelf:"center", color:"#fff"}}>+</Text> : <></>}
+        <Text style={{ alignSelf:"center", color:"#fff"}}>{ valor.toString() }</Text>
         </View>
         </TouchableOpacity>)
 }
@@ -36,7 +36,7 @@ const estilosFuncao = (selecionado) => StyleSheet.create({
 
     },
     viewModificador:{
-        borderWidth:1,
+        borderWidth:2,
         padding:2,
         borderRadius:6,
         width:30,
@@ -44,6 +44,8 @@ const estilosFuncao = (selecionado) => StyleSheet.create({
         flexDirection:"row",
         justifyContent: "center",
         margin:3,
+        borderColor:"#fff"
+        
 
     }
 })

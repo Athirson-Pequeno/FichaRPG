@@ -69,9 +69,21 @@ export const atualizarAtributosPersonagem = async (db, atributos, idPersonagem) 
     return db.executeSql(atualizar)
 }
 
-
 export const atualizarPericiasPersonagem = async (db, pericias, idPersonagem) =>{
     const atualizar = `UPDATE Personagens SET pericias = '${pericias}' WHERE id = ${idPersonagem}`
+
+    return db.executeSql(atualizar)
+}
+
+export const atualizarCaracteristicasPersonagem = async (db, caracteristicas, idPersonagem) =>{
+    const atualizar = `UPDATE Personagens SET caracteristicas = '${caracteristicas}' WHERE id = ${idPersonagem}`
+
+    return db.executeSql(atualizar)
+}
+
+
+export const atualizarNomePersonagem = async (db, nome, idPersonagem) =>{
+    const atualizar = `UPDATE Personagens SET nome = '${nome} ' WHERE id = ${idPersonagem}`
 
     return db.executeSql(atualizar)
 }

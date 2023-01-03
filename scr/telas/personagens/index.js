@@ -1,12 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FlatList, View } from "react-native";
 import RenderPersonagens from "./componentes/renderPersonagens";
-import { DBPersonagensConexao , criarTabelaPersonagens , buscarPersonagens, salvarPersonagem } from "../../servicos/SQLite/BDPersonagens";
+import { DBPersonagensConexao, criarTabelaPersonagens, buscarPersonagens, salvarPersonagem } from "../../servicos/SQLite/BDPersonagens";
 import ModalAddPersonagem from "./componentes/modalAddPersonagem";
+import { CaracteristicasContext } from "../../contexts/CaracteristicasContext";
+
 
 export default function TelaPersonagens(){
 
     const [listaDataPersonagens, setlistaDataPersonagens] = useState([])
+    
+
+    const {aleracao, setAlteracao} = useContext(CaracteristicasContext)
 
     useEffect(() => {
 
@@ -32,7 +37,8 @@ export default function TelaPersonagens(){
 
         }
         FluxoDBPersonagens()
-    },[])
+    },[aleracao])
+
 
     async function salva(item){
         //inicia conexão com o banco de dados

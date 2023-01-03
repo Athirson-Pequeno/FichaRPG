@@ -2,39 +2,31 @@
     "nome":"Pericias",
     "dados":[
         {
-            "nome": "Acrobacia",
-            "modificador": "Des"
-        },
-        {
-            "nome": "Adestrar Animal",
-            "modificador": "Sab"
-        },
-        {
-            "nome": "Arcana",
-            "modificador": "Int"
-        },
-        {
             "nome": "Atletismo",
             "modificador": "For"
         },
         {
-            "nome": "Atuação",
-            "modificador": "Car"
+            "nome": "Acrobacia",
+            "modificador": "Des"
         },
         {
             "nome": "Furtividade",
             "modificador": "Des"
         },
         {
+            "nome": "Prestidigitação",
+            "modificador": "Des"
+        },
+        {
+            "nome": "Arcanismo",
+            "modificador": "Int"
+        },
+        {
             "nome": "História",
             "modificador": "Int"
         },
         {
-            "nome": "Intimidação",
-            "modificador": "Car"
-        },
-        {
-            "nome": "Medicina",
+            "nome": "Investigação",
             "modificador": "Int"
         },
         {
@@ -42,27 +34,23 @@
             "modificador": "Int"
         },
         {
-            "nome": "Percepção",
-            "modificador": "Sab"
-        },
-        {
-            "nome": "Persuasão",
-            "modificador": "Car"
-        },
-        {
-            "nome": "Prestidigitação",
-            "modificador": "Des"
-        },
-        {
-            "nome": "Procurar",
-            "modificador": "Int"
-        },
-        {
             "nome": "Religião",
             "modificador": "Int"
         },
         {
-            "nome": "Sentir Motivação",
+            "nome": "Adestrar Animais",
+            "modificador": "Sab"
+        },
+        {
+            "nome": "Intuição",
+            "modificador": "Sab"
+        },
+        {
+            "nome": "Medicina",
+            "modificador": "Sab"
+        },
+        {
+            "nome": "Percepção",
             "modificador": "Sab"
         },
         {
@@ -70,7 +58,19 @@
             "modificador": "Sab"
         },
         {
-            "nome": "Trapacear",
+            "nome": "Atuação",
+            "modificador": "Car"
+        },
+        {
+            "nome": "Enganação",
+            "modificador": "Car"
+        },
+        {
+            "nome": "Intimidação",
+            "modificador": "Car"
+        },
+        {
+            "nome": "Persuasão",
             "modificador": "Car"
         }
     
