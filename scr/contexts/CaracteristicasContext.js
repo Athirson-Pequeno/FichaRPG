@@ -5,11 +5,11 @@ export const CaracteristicasContext = createContext({})
 
 export function AlteracaoProvider( {children} ){
 
-    const [aleracao, setAlteracao] = useState(false)
+    const [alteracao, setAlteracao] = useState(false)
 
     return(
         <CaracteristicasContext.Provider value={{
-            aleracao,
+            alteracao,
             setAlteracao
         }}>
             {children}

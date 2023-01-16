@@ -27,17 +27,17 @@ export default function ModalAddPersonagem({salva}){
       
       //cria uma string com as caracteristicas do personagem para salvar no banco de dados
       const caracteristicas = JSON.stringify({
-        Classe:classeSelecionada,
-        Sub_Classe:subclasseSelecionada,
-        Raça:racaSelecionada,
-        Nível:0,
-        Vida_Total:0,
-        Vida_Temporária:0,
-        Deslocamento:"0m",
-        Bônus_de_Proficiência:"+0",
-        Armadura:0,
-        Dado_de_Vida:"1d6 + Const",
-        Anotações:"Anotações importantes"
+        classe:classeSelecionada,
+        sub_classe:subclasseSelecionada,
+        raca:racaSelecionada,
+        nivel:0,
+        vida_total:0,
+        vida_temporaria:0,
+        deslocamento:"0m",
+        bonus_de_proficiencia:"+0",
+        armadura:0,
+        dado_de_vida:"1d6 + Const",
+        anotacoes:"Anotações importantes"
       })
 
       //cria uma string com os atributos do personagem para salvar no banco de dados
@@ -216,7 +216,11 @@ const estilos = StyleSheet.create({
         alignItems: 'center'
       },
       textInput:{
-        borderWidth:3
+        borderWidth:3,
+        borderRadius:12,
+        borderColor:"#6c6c6c",
+        padding:6,
+        paddingLeft:10
       },
       textoAdicionar:{
       fontSize:40,

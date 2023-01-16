@@ -28,10 +28,10 @@ export default function RenderAtributos({item, atualizarAtributos}){
         }}
         ></TextInput>
          <View style={estilos.viewModificador}>
-        {( valor >= 0) ? <Text style={{ alignSelf:"center", color:"#fff"}}>+</Text> : <></>}
+        {( valor >= 0) ? <Text style={estilos.textoValor}>+</Text> : <></>}
         {(!isNaN(valor))?
-        <Text style={{ alignSelf:"center", color:"#fff"}}>{ valor.toString() }</Text>:
-        <Text style={{ alignSelf:"center", color:"#fff"}}>0</Text>
+        <Text style={estilos.textoValor}>{ valor.toString() }</Text>:
+        <Text style={estilos.textoValor}>0</Text>
     }
         </View>
         </View>)
@@ -41,11 +41,13 @@ export default function RenderAtributos({item, atualizarAtributos}){
 const estilos = StyleSheet.create({
     valContainer:{
         flexDirection: 'row',
-        marginBottom:5,
+        marginHorizontal:5,
+        marginVertical:2,
         alignItems:"center",
-        backgroundColor:"#424149",
+        backgroundColor:"#c0c0c0",
         paddingHorizontal:6,
-        borderRadius:6
+        borderRadius:6,
+        flex:1,
     },
     valInput:{
         borderWidth: 2,
@@ -54,19 +56,11 @@ const estilos = StyleSheet.create({
         paddingHorizontal:8,
         margin:3,
         height:30,
-        borderColor:"#fff",
-        color:"#fff"
-        
-    },
-    containerAtributos:{
-        flex:1,
-        padding:10,
-        borderWidth:1,
-        margin:6
+     
     },
     text:{
         flex:3,
-        color:"#fff"
+ 
     },
     viewModificador:{
         borderWidth:2,
@@ -77,7 +71,10 @@ const estilos = StyleSheet.create({
         flexDirection:"row",
         justifyContent: "center",
         flex:1,
-        borderColor:"#fff",
         
+    },
+    textoValor:{
+        alignSelf:"center",
+         
     }
 })

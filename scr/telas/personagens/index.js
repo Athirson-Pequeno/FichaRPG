@@ -11,7 +11,7 @@ export default function TelaPersonagens(){
     const [listaDataPersonagens, setlistaDataPersonagens] = useState([])
     
 
-    const {aleracao, setAlteracao} = useContext(CaracteristicasContext)
+    const {alteracao} = useContext(CaracteristicasContext)
 
     useEffect(() => {
 
@@ -37,7 +37,7 @@ export default function TelaPersonagens(){
 
         }
         FluxoDBPersonagens()
-    },[aleracao])
+    },[alteracao])
 
 
     async function salva(item){

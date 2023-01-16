@@ -16,14 +16,14 @@ export default function TelaPersonagem(){
     const rota = useRoute()
     const { item } = rota.params;
     const idPersonagem = item.id
-    const caracteristicas = JSON.parse(item.caracteristicas)
+    
     
     
     //inicia os hooks das listas que serao usadas no render
     const [listaPericias, setListaPericias] = useState([])
     const [listaAtributos, setListaAtributos] = useState([])
 
-    const {aleracao, setAlteracao} = useContext(CaracteristicasContext)
+    const {alteracao, setAlteracao} = useContext(CaracteristicasContext)
 
 
 
@@ -190,7 +190,7 @@ export default function TelaPersonagem(){
 
         atualizarCaracteristicasPersonagem(db, novasCaracteristicas, idPersonagem)
 
-        setAlteracao(!aleracao)
+        setAlteracao(!alteracao)
 
     }
 
@@ -199,17 +199,21 @@ export default function TelaPersonagem(){
 
         atualizarNomePersonagem(db, novoNome, idPersonagem)
 
-        setAlteracao(!aleracao)
+        setAlteracao(!alteracao)
     }
 
-    return (<ScrollView >
+    return (<ScrollView>
  
-    <Caracteristicas caracteristicas={caracteristicas} nome={item.nome} atualizarCaracteristicas={atualizarCaracteristicas} atualizarNome={atualizarNome}/>
+    <Caracteristicas 
+    
+    personagem={item}
+    atualizarCaracteristicas={atualizarCaracteristicas}
+    atualizarNome={atualizarNome}/>
 
-    <View style={{flexDirection:"row", flex:1, borderTopColor:"black", borderTopWidth:5}}>
+    <View >
         {/* atributos do personagem */}
-        
         <Atributos lista={listaAtributos} atualizarAtributos={atualizarAtributos} />
+
         {/* pericias do personagem */}
         <Pericias lista={listaPericias} atualizarPericiasDB={atualizarPericiasDB}/>
    </View>

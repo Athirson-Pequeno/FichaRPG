@@ -20,7 +20,7 @@ export default function RenderCaracteristicas({elemento, atualizarCaracteristica
                             
                         }
                     }
-                    style={{fontSize:28, width:'100%'}}/>           
+                    style={{fontSize:20, width:'100%'}}/>           
             </View>
 
             <View style={[estilos.viewStyle, {flex:1}]}>
@@ -31,7 +31,7 @@ export default function RenderCaracteristicas({elemento, atualizarCaracteristica
                     onChangeText={text => {
                         setsegundoElemento(text)
                         atualizarCaracteristicas(text, (elemento[1][0]).toString())}}
-                    style={{fontSize:28, width:"100%"}}/>
+                    style={{fontSize:20, width:"100%"}}/>
             </View>
 
         </View>)}

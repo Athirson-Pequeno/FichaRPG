@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View ,StyleSheet, Text, FlatList } from "react-native";
 import RenderAtributos from "./renderFlatlist/renderAtributos";
 
 
@@ -12,32 +12,26 @@ export default function Atributos({lista, atualizarAtributos}){
         setListaAtributos(lista)
     })
 
+    const Cabecalho = <Text style={estilos.textoTitulo}>Atributos</Text>
    
-    return (<View style={estilos.containerAtributos}>
-        <Text style={{alignSelf:"center", fontSize:20}}>Atributos</Text>
-        {listaAtributos.map((item)=>{return <RenderAtributos key={item.id} item={item} atualizarAtributos={atualizarAtributos}/>})}
-        </View>
+    return (<View style={{backgroundColor:"#80808030", paddingBottom:8, margin:6, borderRadius:12}}>
+    <FlatList 
+        ListHeaderComponent={Cabecalho}
+        data={listaAtributos}
+        key={item => item.id}
+        numColumns={2}
+        scrollEnabled={false}
+        renderItem={({item})=><RenderAtributos key={item.id} item={item} atualizarAtributos={atualizarAtributos}/>}>
+
+        </FlatList>
+    </View>
 )}
 
 
-
 const estilos = StyleSheet.create({
-    valContainer:{
-        flexDirection: 'row',
-        marginBottom:5
-    },
-    valInput:{
-        borderWidth: 3,
-        flex:1,
-        borderRadius:6,
-        paddingHorizontal:8,
-        
-    },
-    containerAtributos:{
-        flex:1,
-        padding:4,
-    },
-    text:{
-        flex:2
+    
+    textoTitulo:{
+        alignSelf:"center", 
+        fontSize:20
     }
 })

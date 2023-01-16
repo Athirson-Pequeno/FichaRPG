@@ -16,10 +16,10 @@ export default function RenderPericias({item, atualizarPericiasDB}){
    return (<TouchableOpacity 
    style={estilos.containerPericia}
    onPress={()=> atualizar()}>
-        <Text style={{color:"#fff"}}>{item.nome} ({item.modificador})</Text>
+        <Text style={estilos.textoModificador}>{item.nome} ({item.modificador})</Text>
         <View style={estilos.viewModificador}>
-        {( valor >= 0) ? <Text style={{ alignSelf:"center", color:"#fff"}}>+</Text> : <></>}
-        <Text style={{ alignSelf:"center", color:"#fff"}}>{ valor.toString() }</Text>
+        {( valor >= 0) ? <Text style={estilos.textoSinal}>+</Text> : <></>}
+        <Text style={estilos.textoSinal}>{ valor.toString() }</Text>
         </View>
         </TouchableOpacity>)
 }
@@ -30,10 +30,12 @@ const estilosFuncao = (selecionado) => StyleSheet.create({
         justifyContent:"space-between",
         alignItems:"center",
         marginBottom:5,
-        backgroundColor: selecionado ? "#760100" : "#424149",
+        backgroundColor: selecionado ? "#760100" : "#c0c0c0",
         paddingHorizontal:6,
-        borderRadius:6
-
+        borderRadius:6, 
+        flex:1,
+        marginHorizontal:5,
+        marginVertical:2
     },
     viewModificador:{
         borderWidth:2,
@@ -44,8 +46,14 @@ const estilosFuncao = (selecionado) => StyleSheet.create({
         flexDirection:"row",
         justifyContent: "center",
         margin:3,
-        borderColor:"#fff"
-        
-
+        borderColor: selecionado ? "#fff" : "#000"
+    },
+    textoModificador:{
+        color: selecionado ? "#fff" : "#000",
+        fontSize:13
+    },
+    textoSinal:{
+        alignSelf:"center",
+        color:selecionado ? "#fff" : "#000"
     }
 })
